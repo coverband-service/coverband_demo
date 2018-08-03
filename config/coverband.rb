@@ -18,6 +18,12 @@ Coverband.configure do |config|
   config.percentage        = Rails.env.production? ? 1.0 : 100.0
   config.logger            = Rails.logger
 
+  # configure S3 integration
+  config.s3_bucket = 'coverband-demo'
+  config.s3_region = 'us-east-1'
+  config.s3_access_key_id = ENV['AWS_ACCESS_KEY_ID']
+  config.s3_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+
   # config options false, true, or 'debug'. Always use false in production
   # true and debug can give helpful and interesting code usage information
   # they both increase the performance overhead of the gem a little.
