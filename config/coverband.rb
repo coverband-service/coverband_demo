@@ -24,6 +24,9 @@ Coverband.configure do |config|
   config.s3_access_key_id = ENV['AWS_ACCESS_KEY_ID']
   config.s3_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
 
+  # using the new safe reload to enforce files loaded
+  config.safe_reload_files = ['config/coverband.rb']
+
   # config options false, true, or 'debug'. Always use false in production
   # true and debug can give helpful and interesting code usage information
   # they both increase the performance overhead of the gem a little.
