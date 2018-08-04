@@ -1,6 +1,15 @@
 <h1>Coverband Demo</h1>
 
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <p>
   some stuff
 </p>
+
+<a href="/coverage">View Coverage Report</a><br/>
+<a href="/coverband/update_report">Update Coverage Report</a><br/>
+<a href="/coverband/clear">Clear Coverage Data</a><br/>
+
 <%= link_to 'See Posts', posts_path %>
