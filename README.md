@@ -1,24 +1,7 @@
-# README
+# Coverband Demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails 5 application to demo how to use Coverband and the features it offers.
 
-Things you may want to cover:
+# TODO
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* pick a theme / design perhaps Material design https://github.com/seanpaulconnelly/rails5-material-design
