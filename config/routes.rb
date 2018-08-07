@@ -24,11 +24,4 @@ Rails.application.routes.draw do
   constraints basic_constraint do
     mount Coverband::S3Web, at: '/coverage'
   end
-
-  resources :coverband do
-    collection do
-      get :update_report
-      get :clear
-    end
-  end
 end
