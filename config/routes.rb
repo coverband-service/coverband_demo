@@ -21,7 +21,10 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :posts
 
-  constraints basic_constraint do
-    mount Coverband::S3Web, at: '/coverage'
-  end
+  # NOTE make sure to have a constrait around any real production app
+  # the demo app below purposefully shares it source code, but you likely do not want to
+  # constraints basic_constraint do
+  #  mount Coverband::S3Web, at: '/coverage'
+  # end
+  mount Coverband::S3Web, at: '/coverage'
 end
