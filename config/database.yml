@@ -23,6 +23,4 @@ test:
 
 production:
   <<: *default
-  database: coverband-demo_production
-  username: coverband-demo
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  url: ENV['DATABASE_URL']
