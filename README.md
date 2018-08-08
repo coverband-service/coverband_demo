@@ -2,6 +2,12 @@
 
 This is a Rails 5 application to demo how to use Coverband and the features it offers.
 
+Visit the live demo site [https://coverband-demo.herokuapp.com/](https://coverband-demo.herokuapp.com/)
+
+# Heroku Deployment
+
+
+
 # TODO
 
 * deploy to heroku
