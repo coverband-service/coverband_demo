@@ -21,7 +21,8 @@ Coverband.configure do |config|
   # otherwise it is find to report slowly over time with less performance impact
   # with the Coverage collector coverage is ALWAYS captured this is just how frequently
   # it is reported to your back end store.
-  config.percentage        = Rails.env.production? ? 1.0 : 100.0
+  # NOTE: the demo site sends data for EVERY request so one can see the effects
+  config.percentage        = Rails.env.production? ? 100.0 : 100.0
   config.logger            = Rails.logger
 
   # configure S3 integration
