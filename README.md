@@ -6,11 +6,12 @@ Visit the live demo site [https://coverband-demo.herokuapp.com/](https://coverba
 
 # Heroku Deployment
 
+The demo site is hosted on Heroku.
 
+* basic setup was done following the standard [Heroku Rails 5 Guide](https://devcenter.heroku.com/articles/getting-started-with-rails5)
 
 # TODO
 
-* deploy to heroku
 * add deploy to heroku button support
 * pick a theme / design perhaps
    * Material design https://github.com/seanpaulconnelly/rails5-material-design
