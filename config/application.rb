@@ -11,6 +11,8 @@ module CoverbandDemo
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.generators.javascript_engine = :js
+    # ensure we get the fonts
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -28,7 +30,6 @@ module CoverbandDemo
       require 'coverage'
       Coverband::Collectors::Base.instance.start
     end
-
 
   end
 end
