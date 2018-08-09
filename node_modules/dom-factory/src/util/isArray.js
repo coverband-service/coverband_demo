@@ -1,0 +1,1 @@
+export const isArray = (obj) => ({}.toString.call(obj) === '[object Array]')
