@@ -12,7 +12,7 @@ module CoverbandDemo
     config.load_defaults 5.2
     config.generators.javascript_engine = :js
     # ensure we get the fonts
-    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+    config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf)$/
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
