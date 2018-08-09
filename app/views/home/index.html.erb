@@ -1,22 +1,22 @@
-<h1>Coverband Demo</h1>
+<div class="container-fluid">
+  <h1>Coverband Demo</h1>
+  <p>blah blah blah what coverband does</p>
+  <br/>
+  <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+  <p>Try all of the features of <a href="https://github.com/danmayer/coverband/blob/master/lib/coverband/s3_web.rb">Coverband Sinatra App<a/> (Rails Mountable), endpoint</p>
 
-<p>
-  say some stuff
-</p>
+  <%= button_to 'View Coverage Report', '/coverage', class: 'btn btn-primary' %>
+  <br/>
+  <%= button_to 'Update Coverage Report', "/coverage/update_report", method: :post, class: 'btn btn-primary' %></li>
+  <br/>
+  <%= button_to 'Clear Coverage Data', '/coverage/clear', method: :post, class: 'btn btn-primary' %></li>
+  <br/>
+  <%= button_to 'Coverband Reload Coverage Files', '/coverage/reload_files', method: :post, class: 'btn btn-primary' %>
 
-<%= link_to 'View Coverage Report', '/coverage' %><br/>
-<%= link_to 'Update Coverage Report', "/coverage/update_report", method: :post %><br/>
-<%= link_to 'Clear Coverage Data', '/coverage/clear', method: :post %><br/>
-<%= link_to 'Coverband Reload Coverage Files', '/coverage/reload_files', method: :post %><br/>
-
-A fake scaffold to show basic Rails usage.<br/>
-<%= link_to 'See Posts', posts_path %>
-
-<br>
-<hr/>
-footer:<br/>
-The source code for the <a href="https://github.com/danmayer/coverband_demo">Coverband Demo</a> available on Github.
+  <br/>
+  A fake scaffold to show basic Rails usage.<br/>
+  <%= link_to 'See Posts', posts_path %>
+</div>
