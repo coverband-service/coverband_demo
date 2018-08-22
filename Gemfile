@@ -36,9 +36,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Coverband related gems
-#gem 'coverband', '>= 2.0.1.alpha', require: false
+gem 'coverband', '>= 2.0.1.alpha', require: false
 # when testing releases
-gem 'coverband', '>= 2.0.2.alpha', require: false, :path => '/Users/danmayer/projects/coverband'
+#gem 'coverband', '>= 2.0.2.alpha', require: false, :path => '/Users/danmayer/projects/coverband'
 gem 'redis'
 gem 'sinatra', '>= 2.0.3'
 gem 'aws-sdk'
