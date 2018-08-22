@@ -8,7 +8,10 @@
 
   <p>Try all of the features of <a href="https://github.com/danmayer/coverband/blob/master/lib/coverband/s3_web.rb">Coverband Sinatra App<a/> (Rails Mountable), endpoint</p>
 
-  <%= button_to 'View Coverage Report', '/coverage', class: 'btn btn-primary' %>
+
+  <%= button_to 'Coverband Web Index', '/coverage', method: :get, class: 'btn btn-primary' %>
+  <br/>
+  <%= button_to 'View Coverage Report', '/coverage/show', method: :get, class: 'btn btn-primary' %>
   <br/>
   <%= button_to 'Update Coverage Report', "/coverage/update_report", method: :post, class: 'btn btn-primary' %></li>
   <br/>
