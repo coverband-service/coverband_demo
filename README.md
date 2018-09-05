@@ -22,3 +22,4 @@ The initial design off the demo site was pulled from a demo'ed theme, a Material
 * add deploy to Heroku button support
 * add background job example / integration
 * add cron example / integration 
+* destroy failing with turbolinks

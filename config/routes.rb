@@ -1,4 +1,4 @@
-require 'coverband/s3_web'
+require 'coverband/reporters/web'
 
 # protect with existing Rails devise configuration
 devise_constraint = lambda do |request|
