@@ -26,5 +26,5 @@ Rails.application.routes.draw do
   # constraints basic_constraint do
   #  mount Coverband::S3Web, at: '/coverage'
   # end
-  mount Coverband::S3Web, at: '/coverage'
+  mount Coverband::Reporters::Web.new, at: '/coverage'
 end
