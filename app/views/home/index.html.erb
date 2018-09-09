@@ -1,6 +1,15 @@
 <div class="container-fluid">
   <h1>Coverband Demo</h1>
-  <p>blah blah blah what coverband does</p>
+  <p>This application is to help show standard usage of the Coverband Ruby Gem.
+     The goal of Coverband is to help you better understand your production runtime code usage.
+   </p>
+   <ul>
+     <li>see what code is run most frequently</li>
+     <li>see what code is execcuted in production that doesn't have test coverage</li>
+     <li>find code that is never executed in production and could possibly be deleted</li>
+     <li>ensure code is executed on staging prior to production</li>
+     <li>detailed local debugging on a per request basis</li>
+   </li>
   <br/>
   <% if flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>
