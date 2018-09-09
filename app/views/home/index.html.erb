@@ -15,10 +15,12 @@
       <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
-  <p>Try all of the features of <a href="https://github.com/danmayer/coverband/blob/master/lib/coverband/s3_web.rb">Coverband Sinatra App<a/> (Rails Mountable), endpoint</p>
+  <p>Try all of the features of <a href="https://github.com/danmayer/coverband/blob/master/lib/coverband/reporters/web.rb">Coverband Rack App<a/> (Rails Mountable), endpoint</p>
 
-
-  <%= button_to 'Coverband Web Index', '/coverage', method: :get, class: 'btn btn-primary' %>
+  you can embed it like so: <%= button_to 'Coverband Web Index', '/coverage', method: :get, class: 'btn btn-primary' %>
+  <br/>
+  <br/>
+  or you can directly link to it's features
   <br/>
   <%= button_to 'View Coverage Report', '/coverage/show', method: :get, class: 'btn btn-primary' %>
   <br/>
