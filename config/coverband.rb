@@ -1,27 +1,27 @@
+# frozen_string_literal: true
+
 Coverband.configure do |config|
   config.root              = Dir.pwd
   config.collector         = 'coverage'
-  if ENV['REDIS_URL']
-    config.redis             = Redis.new(url: ENV['REDIS_URL'])
-    # TODO NOTE THIS IS A ISSUE IN THE 2.0 release you set something like redis and the store
-    # I need to look a bit more at this but got one bug report quickly after release
-    # (even though test builds didnt need)
-    config.store             = Redis.new(url: ENV['REDIS_URL'])
-  else
-    config.redis             = Redis.new()
-    config.store             = Redis.new()
-  end
+  # TODO: document how to use memory_caching in coverband Readme
+  config.memory_caching    = true
+  config.store = if ENV['REDIS_URL']
+                   Coverband::Adapters::RedisStore.new(url: ENV['REDIS_URL'])
+                 else
+                   Coverband::Adapters::RedisStore.new(Redis.new)
+                 end
 
   config.ignore            = %w[vendor .erb$ .slim$]
-  # add paths that you deploy to that might be different than your local dev root path
+  # add paths that deploy to that might be different than local dev root path
   config.root_paths        = []
 
   # reporting frequency
   # if you are debugging changes to coverband I recommend setting to 100.0
   # otherwise it is find to report slowly over time with less performance impact
-  # with the Coverage collector coverage is ALWAYS captured this is just how frequently
+  # with Coverage collector coverage is ALWAYS captured this is how frequently
   # it is reported to your back end store.
   # NOTE: the demo site sends data for EVERY request so one can see the effects
+  # do not send 100.0 in production!
   config.percentage        = Rails.env.production? ? 100.0 : 100.0
   config.logger            = Rails.logger
 
