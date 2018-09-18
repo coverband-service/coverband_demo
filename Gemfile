@@ -40,7 +40,6 @@ gem 'coverband', '>= 2.0.2', require: false
 # when testing releases
 #gem 'coverband', '>= 2.0.2.alpha', require: false, :path => '/Users/danmayer/projects/coverband'
 gem 'redis'
-gem 'sinatra', '>= 2.0.3'
 gem 'aws-sdk'
 
 group :development, :test do
