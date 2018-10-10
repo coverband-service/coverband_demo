@@ -4,7 +4,7 @@ Coverband.configure do |config|
   config.root              = Dir.pwd
   config.collector         = 'coverage'
   # TODO: document how to use memory_caching in coverband Readme
-  # config.memory_caching    = true
+  config.memory_caching    = true
   config.store = if ENV['REDIS_URL']
                    Coverband::Adapters::RedisStore.new(Redis.new(url: ENV['REDIS_URL']))
                  else
