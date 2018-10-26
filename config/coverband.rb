@@ -11,9 +11,11 @@ Coverband.configure do |config|
                    Coverband::Adapters::RedisStore.new(Redis.new)
                  end
 
-  config.ignore            = %w[vendor .erb$ .slim$]
+  #config.ignore            = %w[vendor .erb$ .slim$]
   # add paths that deploy to that might be different than local dev root path
   config.root_paths        = ['/app/']
+  config.ignore = ['vendor', 'app/assets', 'app/views', '\.haml']
+
 
   # reporting frequency
   # if you are debugging changes to coverband I recommend setting to 100.0
