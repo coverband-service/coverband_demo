@@ -7,4 +7,4 @@ Rails.application.load_tasks
 
 require 'coverband'
 Coverband.configure
-require 'coverband/tasks'
+require 'coverband/utils/tasks'

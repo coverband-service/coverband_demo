@@ -24,12 +24,12 @@ module CoverbandDemo
     Coverband.configure
     config.middleware.use Coverband::Middleware
 
+    # TODO: this should move to a railtie
     # if one uses before_eager_load as I did previously
     # any files that get loaded as part of railties will have no coverage
     config.before_initialize do
-      require 'coverage'
-      Coverband::Collectors::Base.instance.start
+      # have coverband start collecting before files are loaded
+      Coverband.start
     end
-
   end
 end
