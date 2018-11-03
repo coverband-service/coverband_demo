@@ -5,11 +5,11 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
-# require 'coverband'
-# Coverband.configure
-#
-# # Coverband 2
-# # require 'coverband/tasks'
-#
-# # Coverband 3
-# require 'coverband/utils/tasks'
+require 'coverband'
+Coverband.configure
+
+# Coverband 2
+# require 'coverband/tasks'
+
+# Coverband 3
+require 'coverband/utils/tasks'
