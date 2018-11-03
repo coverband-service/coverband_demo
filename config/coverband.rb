@@ -23,7 +23,7 @@ Coverband.configure do |config|
   # it is reported to your back end store.
   # NOTE: the demo site sends data for EVERY request so one can see the effects
   # do not send 100.0 in production!
-  config.percentage        = Rails.env.production? ? 100.0 : 100.0
+  config.percentage        = Rails.env.production? ? 10.0 : 100.0
   config.logger            = Rails.logger
 
   # configure S3 integration
@@ -62,7 +62,7 @@ end
 #   # it is reported to your back end store.
 #   # NOTE: the demo site sends data for EVERY request so one can see the effects
 #   # do not send 100.0 in production!
-#   config.reporting_frequency = Rails.env.production? ? 100.0 : 100.0
+#   config.reporting_frequency = Rails.env.production? ? 10.0 : 100.0
 #   config.logger              = Rails.logger
 #
 #   # configure S3 integration
