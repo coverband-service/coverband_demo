@@ -29,7 +29,12 @@ module CoverbandDemo
     # any files that get loaded as part of railties will have no coverage
     config.before_initialize do
       # have coverband start collecting before files are loaded
-      Coverband.start
+      # Coverband 2
+      require 'coverage'
+      Coverband::Collectors::Base.instance.start
+
+      # Coverband 3
+      # Coverband.start
     end
   end
 end
