@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -29,17 +28,15 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'loofah', '>= 2.2.3'
 
 # Coverband related gems
-#gem 'coverband', '>= 2.0.2'
+# gem 'coverband', '>= 2.0.2'
 gem 'coverband', '>= 3.0.0.alpha', require: false
 # when testing releases
-#gem 'coverband', '>= 3.0.0.alpha', require: false, :path => '/Users/danmayer/projects/coverband'
+# gem 'coverband', '>= 3.0.0.alpha', require: false, :path => '/Users/danmayer/projects/coverband'
 gem 'redis'
 gem 'aws-sdk'
 
