@@ -9,7 +9,7 @@ require 'coverband'
 Coverband.configure
 
 # Coverband 2
-# require 'coverband/tasks'
+require 'coverband/tasks'
 
 # Coverband 3
-require 'coverband/utils/tasks'
+# require 'coverband/utils/tasks'

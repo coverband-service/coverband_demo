@@ -30,11 +30,11 @@ module CoverbandDemo
     config.before_initialize do
       # have coverband start collecting before files are loaded
       # Coverband 2
-      # require 'coverage'
-      # Coverband::Collectors::Base.instance.start
+      require 'coverage'
+      Coverband::Collectors::Base.instance.start
 
       # Coverband 3
-      Coverband.start
+      # Coverband.start
     end
   end
 end
