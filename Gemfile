@@ -34,7 +34,7 @@ gem 'loofah', '>= 2.2.3'
 
 # Coverband related gems
 # Coverband 2
-gem 'coverband', '>= 2.0.2'
+gem 'coverband', '= 2.0.2'
 
 # Coverband 3
 # gem 'coverband', '= 3.0.0.alpha2', require: false
