@@ -33,9 +33,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'loofah', '>= 2.2.3'
 
 # Coverband related gems
-gem 'coverband', '>= 2.0.3'
-# gem 'coverband', '>= 3.0.0.alpha', require: false
-# when testing releases
+# Coverband 2
+# gem 'coverband', '>= 2.0.3'
+
+# Coverband 3
+gem 'coverband', '= 3.0.0.alpha2', require: false
+
+# For local gem file testing
 # gem 'coverband', '>= 3.0.0.alpha', require: false, :path => '/Users/danmayer/projects/coverband'
 gem 'redis'
 gem 'aws-sdk'
