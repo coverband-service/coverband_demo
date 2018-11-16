@@ -35,14 +35,15 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'coverband', '= 2.0.3'
 
 # Coverband 3
-gem 'coverband', '= 3.0.0', require: false
+gem 'coverband', '= 3.0.1.alpha', require: false
 
 # For local gem file testing
-# gem 'coverband', '>= 3.0.0.alpha', require: false, :path => '/Users/danmayer/projects/coverband'
+# gem 'coverband', '>= 3.0.1.alpha', require: false, :path => '/Users/danmayer/projects/coverband'
 
 # Coverband related gems
 gem 'redis'
-gem 'aws-sdk'
+# gem 'aws-sdk'
+gem 'aws-sdk', '~> 1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
