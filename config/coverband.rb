@@ -73,10 +73,11 @@ Coverband.configure do |config|
 
   # using the new safe reload to enforce files loaded
   config.safe_reload_files = ['config/coverband.rb']
+  config.background_reporting_enabled = true
 
   # config options false, true, or 'debug'. Always use false in production
   # true and debug can give helpful and interesting code usage information
   # they both increase the performance overhead of the gem a little.
   # they can also help with initially debugging the installation.
-  # config.verbose           = 'debug'
+  config.verbose           = 'debug'
 end
