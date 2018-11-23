@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'coverband', '= 3.0.1'
 
 # For local gem file testing
-gem 'coverband', '>= 3.0.2.alpha', path: '/Users/danmayer/projects/coverband'
+gem 'coverband', '>= 4.0.0.alpha', path: '/Users/danmayer/projects/coverband'
 
 # Coverband related gems
 gem 'redis'
