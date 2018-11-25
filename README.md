@@ -22,7 +22,6 @@ The initial design off the demo site was pulled from a demo'ed theme, a Material
 - add deploy to Heroku button support
 - add background job example / integration
 - add cron example / integration
-- destroy on posts turbolinks is failing
 - API to collect perf data across CI runs
   - client would post data on each benchmark run
     - `ruby_version, branch or PR name, benchmark_name, calculations -> {data_point_name, i/s, total iterations, total time}, Comparison -> {data_point_name, i/s, diff calculation, note}` 
