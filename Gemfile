@@ -31,14 +31,14 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Coverband 2
-# gem 'coverband', '= 2.0.3'
-
 # Coverband 3
-gem 'coverband', '= 3.0.1', require: false
+# gem 'coverband', '= 3.0.1'
+
+# Coverband 4
+gem 'coverband', '= 4.0.0.alpha'
 
 # For local gem file testing
-# gem 'coverband', '>= 3.0.1.alpha', require: false, :path => '/Users/danmayer/projects/coverband'
+# gem 'coverband', '>= 4.0.0.alpha', path: '/Users/danmayer/projects/coverband'
 
 # Coverband related gems
 gem 'redis'
@@ -47,7 +47,7 @@ gem 'aws-sdk', '~> 1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug'
 end
 
 group :development do
