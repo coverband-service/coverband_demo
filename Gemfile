@@ -45,6 +45,9 @@ gem 'redis'
 # gem 'aws-sdk'
 gem 'aws-sdk', '~> 1'
 
+gem 'activejob', '>= 5.2.1.1'
+gem 'activestorage', '>= 5.2.1.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'
