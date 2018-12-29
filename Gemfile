@@ -32,15 +32,16 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Current Coverband Release
-gem 'coverband', '= 4.0.1.beta', require: false
+gem 'coverband', '= 4.0.1.beta'
 
 # For local gem file testing
-# gem 'coverband', '>= 4.0.1.beta', require: false, :path => '/Users/danmayer/projects/coverband'
+# gem 'coverband', '>= 4.0.1.beta', :path => '/Users/danmayer/projects/coverband'
 
 # Coverband related gems
 gem 'redis'
+
 # gem 'aws-sdk'
-gem 'aws-sdk', '~> 1'
+# gem 'aws-sdk', '~> 1'
 
 gem 'activejob', '>= 5.2.1.1'
 gem 'activestorage', '>= 5.2.1.1'
