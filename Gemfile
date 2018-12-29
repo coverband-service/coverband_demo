@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Current Coverband
+# Current Coverband Release
 gem 'coverband', '= 4.0.1.beta', require: false
 
 # For local gem file testing
