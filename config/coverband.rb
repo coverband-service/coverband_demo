@@ -44,6 +44,10 @@
 
 # 3.x configuration
 Coverband.configure do |config|
+  config.track_gems        = true
+  # toggle on and off gem file details
+  # config.gem_details       = true
+  
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'
   # config.s3_region = 'us-east-1'
