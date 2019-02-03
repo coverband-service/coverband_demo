@@ -47,7 +47,7 @@ Coverband.configure do |config|
   config.track_gems        = true
   # toggle on and off gem file details
   # config.gem_details       = true
-  
+
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'
   # config.s3_region = 'us-east-1'
@@ -62,5 +62,5 @@ Coverband.configure do |config|
   # true and debug can give helpful and interesting code usage information
   # they both increase the performance overhead of the gem a little.
   # they can also help with initially debugging the installation.
-  config.verbose = 'debug'
+  # config.verbose = 'debug'
 end
