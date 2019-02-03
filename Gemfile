@@ -5,6 +5,18 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 
+# Current Coverband Release
+gem 'coverband', '= 4.2.0.alpha'
+
+# For local gem file testing
+# gem 'coverband', '>= 4.2.0.alpha', path: '/Users/danmayer/projects/coverband'
+
+# Coverband related gems
+gem 'redis'
+
+# gem 'aws-sdk'
+# gem 'aws-sdk', '~> 1'
+
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -31,17 +43,8 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Current Coverband Release
-gem 'coverband', '= 4.2.0.alpha'
-
-# For local gem file testing
-# gem 'coverband', '>= 4.2.0.alpha', path: '/Users/danmayer/projects/coverband'
-
-# Coverband related gems
-gem 'redis'
-
-# gem 'aws-sdk'
-# gem 'aws-sdk', '~> 1'
+# show a gem that is never used but loaded
+gem 'rainbows'
 
 gem 'activejob', '>= 5.2.1.1'
 gem 'activestorage', '>= 5.2.1.1'
