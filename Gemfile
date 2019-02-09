@@ -6,7 +6,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.0'
 
 # Current Coverband Release
-gem 'coverband', '= 4.2.0.alpha'
+gem 'coverband', '= 4.2.0.beta'
 
 # For local gem file testing
 # gem 'coverband', '>= 4.2.0.alpha', path: '/Users/danmayer/projects/coverband'
