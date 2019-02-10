@@ -56,7 +56,8 @@ Coverband.configure do |config|
                      config/environments/development.rb
                      config/environments/production.rb
                      .erb$
-                     .slim$]
+                     .slim$
+                     vendor/ruby-*]
 
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'
