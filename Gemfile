@@ -6,10 +6,13 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.0'
 
 # Current Coverband Release
-gem 'coverband', '= 4.1.0.beta'
+# gem 'coverband', '= 4.1.0.beta'
+
+# Current Coverband Master branch
+gem 'coverband', '>= 4.1.0.beta', :git => 'https://github.com/danmayer/coverband.git'
 
 # For local gem file testing
-# gem 'coverband', '>= 4.2.0.alpha', path: '/Users/danmayer/projects/coverband'
+# gem 'coverband', '>= 4.1.0.beta', path: '/Users/danmayer/projects/coverband'
 
 # Coverband related gems
 gem 'redis'
