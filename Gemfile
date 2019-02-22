@@ -9,7 +9,7 @@ gem 'rails', '~> 5.2.0'
 # gem 'coverband', '= 4.1.0.beta'
 
 # Current Coverband Master branch
-gem 'coverband', '>= 4.1.0.beta', :git => 'https://github.com/danmayer/coverband.git'
+gem 'coverband', '>= 4.1.0.beta', git: 'https://github.com/danmayer/coverband.git'
 
 # For local gem file testing
 # gem 'coverband', '>= 4.1.0.beta', path: '/Users/danmayer/projects/coverband'
