@@ -11,20 +11,17 @@ Coverband.configure do |config|
 
   # toggle on and off tracking gems
   config.track_gems = true
-  
+
   # toggle on and off gem file details
   # config.gem_details       = true
 
   # better ignores
-  config.ignore = %w[config/application.rb
-                     config/boot.rb
-                     config/puma.rb
-                     config/environments/test.rb
-                     config/environments/development.rb
-                     config/environments/production.rb
-                     .erb$
-                     .slim$
-                     vendor/ruby-*]
+  config.ignore += %w[config/application.rb
+                      config/boot.rb
+                      config/puma.rb
+                      config/environments/test.rb
+                      config/environments/development.rb
+                      config/environments/production.rb]
 
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'
