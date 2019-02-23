@@ -1,6 +1,5 @@
-GIT
-  remote: https://github.com/danmayer/coverband.git
-  revision: e9b393d652bc1bdc77579657eca062e164ebecf7
+PATH
+  remote: /Users/danmayer/projects/coverband
   specs:
     coverband (4.1.0.beta)
       redis
