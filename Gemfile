@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.2.1'
 
 # Current Coverband Release
 gem 'coverband', '= 4.2.0.rc1'
@@ -13,9 +13,6 @@ gem 'coverband', '= 4.2.0.rc1'
 
 # For local gem file testing
 # gem 'coverband', '>= 4.1.0.beta', path: '/Users/danmayer/projects/coverband'
-
-# Coverband related gems
-gem 'redis'
 
 # gem 'aws-sdk'
 # gem 'aws-sdk', '~> 1'
@@ -48,9 +45,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # show a gem that is never used but loaded
 gem 'rainbows'
-
-gem 'activejob', '>= 5.2.1.1'
-gem 'activestorage', '>= 5.2.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
