@@ -13,7 +13,7 @@ Coverband.configure do |config|
   config.track_gems = true
 
   # toggle on and off gem file details
-  # config.gem_details       = true
+  config.gem_details = true
 
   # better ignores
   config.ignore += %w[config/application.rb
