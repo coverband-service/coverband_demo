@@ -6,7 +6,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.2.1'
 
 # Current Coverband Release
-gem 'coverband', '= 4.2.0.rc1'
+gem 'coverband', '= 4.1.1'
 
 # Current Coverband Master branch
 # gem 'coverband', '>= 4.1.0.beta', git: 'https://github.com/danmayer/coverband.git'
