@@ -19,6 +19,10 @@ Coverband.configure do |config|
   config.ignore += %w[config/application.rb
                       config/boot.rb
                       config/puma.rb
+                      config/coverband.rb
+                      bin/spring
+                      bin/rails
+                      config/spring.rb
                       config/environments/test.rb
                       config/environments/development.rb
                       config/environments/production.rb]

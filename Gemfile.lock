@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/danmayer/coverband.git
+  revision: 36690f53a883995064a58fcc8356f7871f86eabf
+  branch: feature/runtime_coverage_ui
+  specs:
+    coverband (4.2.0.rc2)
+      redis
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,8 +75,6 @@ GEM
       nokogiri (~> 1.8)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
-    coverband (4.1.1)
-      redis
     crass (1.0.4)
     erubi (1.8.0)
     execjs (2.7.0)
@@ -211,7 +217,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
-  coverband (= 4.1.1)
+  coverband (>= 4.2.0.rc2)!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   material_icons
