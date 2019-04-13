@@ -34,7 +34,6 @@ Coverband.configure do |config|
 
   # This tests a stand alone rubyscript collecting its own Coverage
   # The script loads coverband and therefor needs to be reloaded
-  # does this relate
   config.safe_reload_files = ['bin/script_test.rb']
 
   # config options false, true, or 'debug'. Always use false in production
