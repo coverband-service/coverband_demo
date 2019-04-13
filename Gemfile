@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.2.1'
 # Current Coverband Release
 # gem 'coverband', '= 4.1.1'
 
-# Current Coverband Master branch
+# Current Coverband development branch
 gem 'coverband', '>= 4.2.0.rc2', git: 'https://github.com/danmayer/coverband.git', branch: 'feature/runtime_coverage_ui'
 
 # For local gem file testing
