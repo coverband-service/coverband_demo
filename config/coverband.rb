@@ -15,7 +15,7 @@ Coverband.configure do |config|
   # toggle on and off gem file details
   config.gem_details = false
 
-  # better ignores
+  # better ignores bin started to show in runtime only ;)
   config.ignore += %w[config/application.rb
                       config/boot.rb
                       config/puma.rb
