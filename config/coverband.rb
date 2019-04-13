@@ -36,6 +36,9 @@ Coverband.configure do |config|
   # The script loads coverband and therefor needs to be reloaded
   config.safe_reload_files = ['bin/script_test.rb']
 
+  # Logging when debugging
+  config.logger = Rails.logger
+
   # config options false, true, or 'debug'. Always use false in production
   # true and debug can give helpful and interesting code usage information
   # they both increase the performance overhead of the gem a little.
