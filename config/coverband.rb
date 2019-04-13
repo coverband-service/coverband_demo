@@ -20,8 +20,7 @@ Coverband.configure do |config|
                       config/boot.rb
                       config/puma.rb
                       config/coverband.rb
-                      bin/spring
-                      bin/rails
+                      bin/*
                       config/spring.rb
                       config/environments/test.rb
                       config/environments/development.rb
