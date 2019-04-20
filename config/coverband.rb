@@ -13,7 +13,7 @@ Coverband.configure do |config|
   config.track_gems = true
 
   # toggle on and off gem file details
-  config.gem_details = false
+  config.gem_details = true
 
   # better ignores bin started to show in runtime only ;)
   config.ignore += %w[config/application.rb
