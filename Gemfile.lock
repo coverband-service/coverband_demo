@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/danmayer/coverband.git
-  revision: 850c50a23ff4828e30b90334dcb65b947e7128b8
+  revision: b60ecf500863808b24b51bfbccabb1abfe1917d8
   branch: feature/runtime_coverage_ui
   specs:
     coverband (4.2.0.rc2)
