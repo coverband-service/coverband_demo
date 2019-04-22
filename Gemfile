@@ -12,10 +12,10 @@ group :development, :test do
 end
 
 # Current Coverband Release
-# gem 'coverband', '= 4.1.1'
+gem 'coverband', '= 4.2.0.rc2'
 
 # Current Coverband development branch
-gem 'coverband', '>= 4.2.0.rc2', git: 'https://github.com/danmayer/coverband.git', branch: 'feature/runtime_coverage_ui'
+# gem 'coverband', '>= 4.2.0.rc2', git: 'https://github.com/danmayer/coverband.git', branch: 'feature/runtime_coverage_ui'
 
 # For local gem file testing
 # gem 'coverband', '>= 4.2.0.rc2', path: '/Users/danmayer/projects/coverband'
