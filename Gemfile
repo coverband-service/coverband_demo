@@ -12,7 +12,7 @@ group :development, :test do
 end
 
 # Current Coverband Release
-gem 'coverband', '= 4.2.0.rc2'
+gem 'coverband', '= 4.2.0.rc3'
 
 # Current Coverband development branch
 # gem 'coverband', '>= 4.2.0.rc2', git: 'https://github.com/danmayer/coverband.git', branch: 'feature/runtime_coverage_ui'
