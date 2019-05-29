@@ -5,6 +5,9 @@ Coverband.configure do |config|
   # toggle allowing folks to clear coverband from web-ui
   config.web_enable_clear = true
 
+  # toggle on and off using oneshot
+  # config.use_oneshot_lines_coverage = true
+
   # toggle on and off web debug
   # allowing one to dump full coverband stored json data to web
   config.web_debug = true
@@ -15,7 +18,8 @@ Coverband.configure do |config|
   # toggle on and off gem file details
   config.gem_details = true
 
-  # better ignores bin started to show in runtime only ;)
+  # ignores bin started to show in runtime only ;)
+  # NOTE: that activerecord/* shows how to ignore gems
   config.ignore += %w[config/application.rb
                       config/boot.rb
                       config/puma.rb
@@ -24,7 +28,8 @@ Coverband.configure do |config|
                       config/spring.rb
                       config/environments/test.rb
                       config/environments/development.rb
-                      config/environments/production.rb]
+                      config/environments/production.rb
+                      activerecord/*]
 
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'
