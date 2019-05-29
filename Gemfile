@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby '2.5.1'
+ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2.1'
@@ -12,13 +12,13 @@ group :development, :test do
 end
 
 # Current Coverband Release
-gem 'coverband', '= 4.2.0'
+# gem 'coverband', '= 4.2.0'
 
 # Current Coverband development branch
-# gem 'coverband', '>= 4.2.0.rc2', git: 'https://github.com/danmayer/coverband.git', branch: 'feature/runtime_coverage_ui'
+gem 'coverband', '>= 4.2.1.rc1', git: 'https://github.com/danmayer/coverband.git', branch: 'fix_rake_coverage'
 
 # For local gem file testing
-# gem 'coverband', '>= 4.2.0.rc2', path: '/Users/danmayer/projects/coverband'
+# gem 'coverband', '>= 4.2.1.rc1', path: '/Users/danmayer/projects/coverband'
 
 # gem 'aws-sdk'
 # gem 'aws-sdk', '~> 1'
