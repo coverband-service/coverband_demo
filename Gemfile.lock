@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/danmayer/coverband.git
-  revision: 5c6f3d14b3b68139cdb3db053d70e0ded71617f3
+  revision: c9703c98a39171617a9bbe0537f40a72c8d9ce83
   branch: fix_rake_coverage
   specs:
     coverband (4.2.1.rc1)
