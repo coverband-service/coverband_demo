@@ -50,6 +50,8 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'sidekiq'
+
 # show a gem that is never used but loaded
 gem 'rainbows'
 
