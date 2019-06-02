@@ -11,6 +11,7 @@
      <li>detailed local debugging on a per request basis</li>
    </li>
   <br/>
+
   <% if flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>
   <% end %>
@@ -32,5 +33,6 @@
 
   <br/>
   A fake scaffold to show basic Rails usage.<br/>
-  <%= link_to 'See Posts', posts_path %>
+  <%= link_to 'See Posts', posts_path %><br/>
+  <%= link_to 'Trigger Background Job', '/trigger_jobs' %>
 </div>
