@@ -1,5 +1,3 @@
-require 'coverband/reporters/web'
-
 # protect with existing Rails devise configuration
 devise_constraint = lambda do |request|
   request.env['warden'] && request.env['warden'].authenticate? && request.env['warden'].user.admin?
@@ -27,5 +25,5 @@ Rails.application.routes.draw do
   # constraints basic_constraint do
   #  mount Coverband::S3Web, at: '/coverage'
   # end
-  mount Coverband::Reporters::Web.new, at: '/coverage'
+  # mount Coverband::Reporters::Web.new, at: '/coverage'
 end
