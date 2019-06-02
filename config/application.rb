@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 require 'coverband'
 Bundler.require(*Rails.groups)
+require 'sidekiq/api'
 
 module CoverbandDemo
   class Application < Rails::Application
