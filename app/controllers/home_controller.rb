@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   before_action :set_notice, only: [:index]
 
   def index
+    @job_count = Sidekiq::Stats.new.processed
   end
 
   def trigger_jobs
@@ -18,5 +19,4 @@ class HomeController < ApplicationController
       redirect_to '/'
     end
   end
-
 end
