@@ -4,3 +4,8 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+desc 'trigger background job'
+task trigger_job: :environment do
+  HardWorker.perform_async('bob', 5)
+end

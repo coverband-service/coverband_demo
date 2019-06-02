@@ -19,6 +19,7 @@ end
 
 Rails.application.routes.draw do
   root 'home#index'
+  get '/trigger_jobs' => 'home#trigger_jobs'
   resources :posts
 
   # NOTE make sure to have a constrait around any real production app
