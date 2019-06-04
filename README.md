@@ -19,7 +19,9 @@ The initial design off the demo site was pulled from a demo'ed theme, a Material
 
 # TODO
 
-- more realistic Rails usage, perhaps add something to help market coverband like show tweets
+- more realistic Rails usage:
+	- perhaps add something to help market coverband like show tweets
+	- showcase different collection methods
 - add deploy to Heroku button support
 - add background job example / integration
 - add cron example / integration
