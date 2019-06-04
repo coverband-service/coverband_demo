@@ -15,8 +15,8 @@ end
 # gem 'coverband', '= 4.2.0'
 
 # Current Coverband development branch
-# gem 'coverband', '>= 4.2.1.rc1', git: 'https://github.com/danmayer/coverband.git', branch: 'fix_rake_coverage'
-gem 'coverband', '= 4.2.0.rc3'
+gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'master'
+#gem 'coverband', '= 4.2.0.rc3'
 
 # For local gem file testing
 # gem 'coverband', '>= 4.2.1.rc1', path: '/Users/danmayer/projects/coverband'
