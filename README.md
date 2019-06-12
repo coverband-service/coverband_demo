@@ -19,9 +19,7 @@ The initial design off the demo site was pulled from a demo'ed theme, a Material
 
 # TODO
 
-- more realistic Rails usage:
-	- perhaps add something to help market coverband like show tweets
-	- showcase different collection methods
+- more realistic Rails usage: - perhaps add something to help market coverband like show tweets - showcase different collection methods - thinking I could use it to demo the code observability concept via an API with document storage to attach arbitrary data to lines of code.
 - add deploy to Heroku button support
 - add background job example / integration
 - add cron example / integration
