@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/danmayer/coverband.git
-  revision: c8f05e067b2843362991a1c02213e2bc0dfc34f4
-  branch: feature/move_to_marshal
+  revision: 2ff013058aa0d0e6284d42303b9a37e01791f877
+  branch: feature/experiment
   specs:
     coverband (4.2.1.rc4)
       redis
