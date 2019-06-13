@@ -15,7 +15,7 @@ end
 # gem 'coverband', '= 4.2.0'
 
 # Current Coverband development branch
-gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'exp_2'
+# gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'exp_2'
 # gem 'coverband', '= 4.2.0.rc3'
 
 # For local gem file testing
