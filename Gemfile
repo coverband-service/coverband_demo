@@ -16,10 +16,10 @@ end
 
 # Current Coverband development branch
 gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'exp_2'
-#gem 'coverband', '= 4.2.0.rc3'
+# gem 'coverband', '= 4.2.0.rc3'
 
 # For local gem file testing
-#gem 'coverband', '>= 4.2.1.rc4', path: '/Users/danmayer/projects/coverband'
+# gem 'coverband', '>= 4.2.1.rc4', path: '/Users/danmayer/projects/coverband'
 
 # gem 'aws-sdk'
 # gem 'aws-sdk', '~> 1'
