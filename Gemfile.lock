@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/danmayer/coverband.git
-  revision: a467a3e1ef0794aec7d442047e31e80fbbb8a2a6
+  revision: 4ba8a5443502a3c2ce12d3963603f9b18cd60dbf
   branch: exp_2
   specs:
     coverband (4.2.1.rc4)
