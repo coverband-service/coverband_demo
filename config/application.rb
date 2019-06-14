@@ -4,9 +4,16 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-#require 'coverband'
+
+# require coverband here to ensure tracking of all gems
+# require 'coverband'
+
 Bundler.require(*Rails.groups)
 require 'sidekiq/api'
+
+# require coverband here with a gemfile of require: false
+# to ensure that no gem data is tracked which has slight performance and memory hits
+require 'coverband'
 
 module CoverbandDemo
   class Application < Rails::Application
