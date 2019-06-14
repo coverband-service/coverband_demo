@@ -6,7 +6,7 @@ Coverband.configure do |config|
   config.web_enable_clear = true
 
   # toggle on and off using oneshot
-  config.use_oneshot_lines_coverage = true
+  # config.use_oneshot_lines_coverage = true
 
   # toggle on and off web debug
   # allowing one to dump full coverband stored json data to web
