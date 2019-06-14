@@ -75,4 +75,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # move coverband to last to see if that has an impact
-gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'exp_2'
+gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'exp_2', require: false
