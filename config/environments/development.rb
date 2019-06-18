@@ -4,9 +4,12 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  # NOTE: While doing actual rails dev flip this to false, when debugging coverband flip to true
+  # if you leave this to false it can put load time coverage
+  # into the runtime namespace due to dynamic reloading
+  config.cache_classes = true
 
-  # Do not eager load code on boot.
+  # Do not eager load code on boot, this is the normal Rails default, but...
   # it is easier to debug coverband with eager_load true like we have on production
   config.eager_load = true
 
