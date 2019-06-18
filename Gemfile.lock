@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/danmayer/coverband.git
-  revision: ad9e500896ad24336a72cfc0ba57e9776809b173
-  branch: memory_improvements
+  revision: b5ae5af84201984de008f9793ff782e12ce64dc4
+  branch: master
   specs:
     coverband (4.2.1.rc4)
       redis
