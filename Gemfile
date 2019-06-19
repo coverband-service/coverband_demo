@@ -66,10 +66,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # move coverband to last to see if that has an impact
-gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'memory_improvements', require: false
+# gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'memory_improvements', require: false
 
 # Current Coverband Release
-# gem 'coverband', '= 4.2.0'
+gem 'coverband', '= 4.2.0'
 
 # Current Coverband development branch
 # gem 'coverband', '= 4.2.0.rc3'
