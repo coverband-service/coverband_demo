@@ -5,6 +5,10 @@ Coverband.configure do |config|
   # toggle allowing folks to clear coverband from web-ui
   config.web_enable_clear = true
 
+  # toggle store type
+  redis_url = ENV['REDIS_URL']
+  config.store = Coverband::Adapters::MultiKeyRedisStore.new(Redis.new(url: redis_url))
+
   # toggle on and off using oneshot
   # config.use_oneshot_lines_coverage = true
   # config.simulate_oneshot_lines_coverage = true

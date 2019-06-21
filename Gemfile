@@ -49,9 +49,10 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  # Spring makes it hard to debug and develop coverband locally
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem 'spring'
+  # gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
@@ -66,10 +67,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # move coverband to last to see if that has an impact
-# gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'memory_improvements', require: false
+gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'combined', require: false
 
 # Current Coverband Release
-gem 'coverband', '= 4.2.0'
+# gem 'coverband', '= 4.2.0'
 
 # Current Coverband development branch
 # gem 'coverband', '= 4.2.0.rc3'
