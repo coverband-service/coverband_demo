@@ -11,7 +11,7 @@ basic_constraint = lambda do |request|
     credentials = ActionController::HttpAuthentication::Basic.decode_credentials(request)
     email, password = credentials.split(':')
 
-    email == 'foo' && password = 'bar'
+    email == 'foo' && password == 'bar'
   end
 end
 
