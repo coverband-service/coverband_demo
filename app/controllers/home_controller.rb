@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 
   def trigger_jobs
     HardWorker.perform_async('bob', 5)
-    redirect_to '/?notice=job queued to sidekiq job'
+    redirect_to '/?notice=job queued to sidekiq'
   end
 
   private
