@@ -7,7 +7,6 @@ class HomeController < ApplicationController
 
   def trigger_jobs
     HardWorker.perform_async('bob', 5)
-    # flash[:notice] = 'job queued to sidekiq'
     redirect_to '/?notice=job queued to sidekiq job'
   end
 
