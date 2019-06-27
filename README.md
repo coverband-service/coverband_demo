@@ -27,6 +27,4 @@ The initial design off the demo site was pulled from a demo'ed theme, a Material
   - client would post data on each benchmark run
     - `ruby_version, branch or PR name, benchmark_name, calculations -> {data_point_name, i/s, total iterations, total time}, Comparison -> {data_point_name, i/s, diff calculation, note}`
 - a way to toggle modes?
-    - more
-    - more
-    
+  - oneshot, simulated, or regular
