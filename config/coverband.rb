@@ -6,8 +6,8 @@ Coverband.configure do |config|
   config.web_enable_clear = true
 
   # toggle store type
-  redis_url = ENV['REDIS_URL']
-  config.store = Coverband::Adapters::MultiKeyRedisStore.new(Redis.new(url: redis_url))
+  # redis_url = ENV['REDIS_URL']
+  # config.store = Coverband::Adapters::MultiKeyRedisStore.new(Redis.new(url: redis_url))
 
   # toggle on and off using oneshot
   # config.use_oneshot_lines_coverage = true
