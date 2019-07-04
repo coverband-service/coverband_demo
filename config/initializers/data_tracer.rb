@@ -66,27 +66,29 @@ if ENV['DATA_TRACER']
   end
   line_trace.enable
 
-  exception_trace = TracePoint.new(:raise) do |tp|
-    # tp.raised_exeption contains the actual exception object that was raised!
-    # logger.debug "#{tp.raised_exception.object_id}: #{tp.raised_exception.class} #{tp.raised_exception.message} ".yellow + tp.raised_exception.backtrace[0].sub(Rails.root.to_s, "").blue
-  end
-  exception_trace.enable
+  Raven.configure do |config|
+    config.async = lambda do |event|
+      event = Raven.send_event(event)
+      err.backtrace.each do |line|
+        err_path = line.split(":").first
+        lineno = line.split(":")[1]
 
-  def log_exception_trace(path, line, exception)
-    file_data[tp.path][tp.lineno]['exception_traces'] = [] unless file_data[tp.path][tp.lineno]['exception_traces']
-    file_data[tp.path][tp.lineno]['exception_traces'] << exception_trace.join(', ') unless (file_data[tp.path][tp.lineno]['exception_traces'].length > 5 || file_data[tp.path][tp.lineno]['exception_traces'].include?(exception_trace))
+        file_data[err_path][lineno]['exception_traces'] = [] unless file_data[err_path][lineno]['exception_traces']
+        file_data[err_path][lineno]['exception_traces'] << event.id unless (file_data[err_path][lineno]['exception_traces'].length > 5 || file_data[err_path][lineno]['exception_traces'].include?(event.id))
+      end
+    end
   end
 
   at_exit do
     # puts "mapped_tests: "
     # puts tests
-    puts "file data: "
-    puts file_data['/Users/danmayer/projects/coverband_demo/app/controllers/posts_controller.rb']
-    puts file_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb']
+    puts "file_data:"
+    puts "file_data posts_controller: #{file_data['/Users/danmayer/projects/coverband_demo/app/controllers/posts_controller.rb']}"
+    puts "file_data post: #{file_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb']}"
 
     File.open("#{file}.#{Process.pid}", 'wb') { |f| f.write(Marshal.dump(file_data)) }
 
-    #doesn't store as utf-8
-    #File.open(file, 'w') {|f| f.write(file_data.to_json) }
+    # JSON doesn't store as utf-8
+    # File.open(file, 'w') {|f| f.write(file_data.to_json) }
   end
 end
