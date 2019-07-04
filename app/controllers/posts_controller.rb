@@ -70,6 +70,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy_bad_dangerously
+    Post.clear_bad_posts(all: false, dangerous: true)
+    respond_to do |format|
+      format.html { redirect_to posts_url, notice: 'Posts cleaned up (dangerously).' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

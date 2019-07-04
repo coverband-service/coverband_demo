@@ -12,5 +12,5 @@ end
 
 desc 'run posts cleanup'
 task posts_cleanup: :environment do
-  Post.clear_bad_posts(all: false)
+  Post.clear_bad_posts(all: true)
 end

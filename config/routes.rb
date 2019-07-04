@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       post 'destroy_bad_posts'
+      post 'destroy_bad_dangerously'
     end
   end
 

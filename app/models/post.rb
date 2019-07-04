@@ -5,13 +5,17 @@ class Post < ApplicationRecord
   #
   # this is not an example of good code ;)
   ###
-  def self.clear_bad_posts(all: false)
+  def self.clear_bad_posts(all: false, dangerous: false)
     posts = Post.all
     bad_posts = posts.select { |post| post.title.blank? || post.body.blank? }
     if all
       bad_posts.destroy_all!
     else
-      bad_posts.first&.destroy!
+      if dangerous
+        bad_posts.first.destroy!
+      else
+        bad_posts.first&.destroy!
+      end
     end
   end
 
