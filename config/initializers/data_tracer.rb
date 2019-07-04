@@ -7,6 +7,7 @@ if ENV['DATA_TRACER']
   current_trace = nil
   previous_return = nil
   current_dump = nil
+  exception_trace
   file_data = {}
 
   BindingDumper::MagicObjects.register(Rails)
@@ -64,6 +65,17 @@ if ENV['DATA_TRACER']
     end
   end
   line_trace.enable
+
+  exception_trace = TracePoint.new(:raise) do |tp|
+    # tp.raised_exeption contains the actual exception object that was raised!
+    # logger.debug "#{tp.raised_exception.object_id}: #{tp.raised_exception.class} #{tp.raised_exception.message} ".yellow + tp.raised_exception.backtrace[0].sub(Rails.root.to_s, "").blue
+  end
+  exception_trace.enable
+
+  def log_exception_trace(path, line, exception)
+    file_data[tp.path][tp.lineno]['exception_traces'] = [] unless file_data[tp.path][tp.lineno]['exception_traces']
+    file_data[tp.path][tp.lineno]['exception_traces'] << exception_trace.join(', ') unless (file_data[tp.path][tp.lineno]['exception_traces'].length > 5 || file_data[tp.path][tp.lineno]['exception_traces'].include?(exception_trace))
+  end
 
   at_exit do
     # puts "mapped_tests: "
