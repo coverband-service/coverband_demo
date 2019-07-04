@@ -11,8 +11,6 @@ Metrics/MethodLength:
   Enabled: false
 Metrics/LineLength:
   Max: 120
-Metrics/BlockNesting:
-  Max: 5
 Bundler/OrderedGems:
   Enabled: false
 Metrics/CyclomaticComplexity:
@@ -54,8 +52,6 @@ Style/ClassAndModuleChildren:
 Style/MethodMissingSuper:
   Enabled: false
 Style/MissingRespondToMissing:
-  Enabled: false
-Performance/Casecmp:
   Enabled: false
 Layout/EmptyLinesAroundArguments:
   Enabled: false

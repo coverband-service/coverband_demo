@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.2.1'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'
+  # gem 'pry-rails'
 end
 
 # gem 'aws-sdk'
@@ -49,6 +50,8 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubocop'
+
   # Spring makes it hard to debug and develop coverband locally
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
@@ -74,6 +77,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Current Coverband development release
 gem 'coverband', '= 4.2.1.rc4'
+
+# exploring dumping all lines
+gem 'binding_dumper'
 
 # For local gem file testing
 # gem 'coverband', '>= 4.2.1.rc4', path: '/Users/danmayer/projects/coverband', require: false
