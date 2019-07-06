@@ -24,6 +24,7 @@ if ENV['DATA_TRACER']
   # https://stackoverflow.com/questions/34751724/how-can-i-inspect-what-is-the-default-value-for-optional-parameter-in-rubys-met
   line_trace = TracePoint.new(:line) do |tp|
     if tp.path.start_with?(current_root) &&
+       !tp.path.include?('vendor') &&
        !tp.path.include?('data_tracer.rb') &&
        !tp.path.include?('test') &&
        !tp.path.include?('.erb')
