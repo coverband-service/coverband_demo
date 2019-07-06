@@ -53,5 +53,5 @@ Coverband.configure do |config|
   # true and debug can give helpful and interesting code usage information
   # they both increase the performance overhead of the gem a little.
   # they can also help with initially debugging the installation.
-  config.verbose = true
+  config.verbose = false # true
 end
