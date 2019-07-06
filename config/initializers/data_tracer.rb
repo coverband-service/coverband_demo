@@ -9,6 +9,8 @@ if ENV['DATA_TRACER']
   current_dump = nil
   file_data = {}
   background_started = false
+  redis_url = ENV['REDIS_URL']
+  redis = Redis.new(url: redis_url)
 
   BindingDumper::MagicObjects.register(Rails)
   BindingDumper::MagicObjects.register(PostsController)
@@ -35,7 +37,7 @@ if ENV['DATA_TRACER']
         #   loop do
         #     sleep(20)
         #     puts 'background capture'
-        #     capture_traces(file_data)
+        #     capture_traces(file_data, redis)
         #   end
         # end
       end
@@ -84,10 +86,7 @@ if ENV['DATA_TRACER']
     end
   end
 
-  def capture_traces(file_data)
-    redis_url = ENV['REDIS_URL']
-    redis = Redis.new(url: redis_url)
-
+  def capture_traces(file_data, redis)
     if file_data['/Users/danmayer/projects/coverband_demo/app/controllers/posts_controller.rb'] ||
       file_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb']
       puts 'trace data:'
@@ -100,7 +99,12 @@ if ENV['DATA_TRACER']
   end
 
   at_exit do
-    capture_traces(file_data)
+    begin
+      capture_traces(file_data, redis)
+    rescue
+      # ignore heroku precompile:assets error
+      puts "at_exit capture error"
+    end
 
     # JSON doesn't store as utf-8
     # File.open(file, 'w') {|f| f.write(file_data.to_json) }
