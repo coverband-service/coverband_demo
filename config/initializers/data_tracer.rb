@@ -7,20 +7,13 @@ if ENV['DATA_TRACER']
   current_trace = nil
   previous_return = nil
   current_dump = nil
-  exception_trace
   file_data = {}
+  background_started = false
 
   BindingDumper::MagicObjects.register(Rails)
   BindingDumper::MagicObjects.register(PostsController)
 
   puts 'starting tracer'
-  # return_trace = TracePoint.new(:return) do |tp|
-  #   if tp.return_value
-  #     previous_return = tp.return_value
-  #   end
-  # end
-  # return_trace.enable
-
   # call stack
   # https://github.com/Shopify/rotoscope/issues/16
   # gc?
@@ -34,24 +27,31 @@ if ENV['DATA_TRACER']
        !tp.path.include?('.erb')
       current_trace = Kernel.caller_locations[0...20]
 
+      # hack to start background tracer
+      if tp.path.match('/app/models/post.rb') && tp.lineno == 11 && background_started == false
+        background_started = true
+        puts 'starting background tracer'
+        Thread.new do
+          loop do
+            sleep(20)
+            puts 'background capture'
+            capture_traces(file_data)
+          end
+        end
+      end
+
       # code = File.open(tp.path, 'r') { |f| f.readlines[tp.lineno - 1] }
-      if tp.path == '/Users/danmayer/projects/coverband_demo/app/models/post.rb' ||
-         tp.path == '/Users/danmayer/projects/coverband_demo/app/controllers/posts_controller.rb'
+      if tp.path.match('/app/models/post.rb') ||
+         tp.path.match('/app/controllers/posts_controller.rb')
         current_dump = begin
                   tp.binding.dump
                  rescue => e
                   puts "dumper had an error"
                   { failed: 'binding dumper failed' }
                 end
-
-        puts "-------------------"
       end
 
-      # puts cod
-
-      #results = tp.binding.eval(code)
-      #puts results
-
+      # initialize
       file_data[tp.path] = {} unless file_data[tp.path]
       file_data[tp.path][tp.lineno] = {} unless file_data[tp.path][tp.lineno]
 
@@ -61,7 +61,7 @@ if ENV['DATA_TRACER']
 
       # stack trace
       file_data[tp.path][tp.lineno]['caller_traces'] = [] unless file_data[tp.path][tp.lineno]['caller_traces']
-      file_data[tp.path][tp.lineno]['caller_traces'] << current_trace.join(', ') unless (file_data[tp.path][tp.lineno]['caller_traces'].length > 5 || file_data[tp.path][tp.lineno]['caller_traces'].include?(current_trace))
+      file_data[tp.path][tp.lineno]['caller_traces'] << current_trace.join(', ') unless (file_data[tp.path][tp.lineno]['caller_traces'].length > 5 || file_data[tp.path][tp.lineno]['caller_traces'].include?(current_trace.join(', ')))
     end
   end
   line_trace.enable
@@ -72,8 +72,8 @@ if ENV['DATA_TRACER']
 
       # link_to it via https://sentry.io/api/0/organizations/coverband-demo/issues/?limit=25&project=1497449&query=28d935d10f8a4084b3511b4baa958046&shortIdLookup=1&statsPeriod=14d
       err.backtrace.each do |line|
-        err_path = line.split(":").first
-        lineno = line.split(":")[1]
+        err_path = line.split(':').first
+        lineno = line.split(':')[1]
 
         # filter none app code
         next unless err_path.start_with?(current_root)
@@ -84,16 +84,26 @@ if ENV['DATA_TRACER']
     end
   end
 
-  at_exit do
-    # puts "mapped_tests: "
-    # puts tests
-    puts "file_data:"
-    puts "file_data posts_controller: #{file_data['/Users/danmayer/projects/coverband_demo/app/controllers/posts_controller.rb']}"
-    puts "file_data post: #{file_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb']}"
+  def capture_traces(file_data)
+    redis_url = ENV['REDIS_URL']
+    redis = Redis.new(url: redis_url)
 
-    File.open("#{file}.#{Process.pid}", 'wb') { |f| f.write(Marshal.dump(file_data)) }
+    if file_data['/Users/danmayer/projects/coverband_demo/app/controllers/posts_controller.rb'] ||
+      file_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb']
+      puts 'trace data:'
+      puts "file_data posts_controller: #{file_data['/Users/danmayer/projects/coverband_demo/app/controllers/posts_controller.rb']}"
+      puts "file_data post: #{file_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb']}"
+    end
+
+    dump = Marshal.dump(file_data)
+    redis.set('data_tracer', dump)
+  end
+
+  at_exit do
+    capture_traces(file_data)
 
     # JSON doesn't store as utf-8
     # File.open(file, 'w') {|f| f.write(file_data.to_json) }
+    # File.open("#{file}.#{Process.pid}", 'wb') { |f| f.write(dump) }
   end
 end

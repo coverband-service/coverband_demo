@@ -18,6 +18,7 @@ end
 Rails.application.routes.draw do
   root 'home#index'
   get '/trigger_jobs' => 'home#trigger_jobs'
+  get '/data_tracer' => 'home#data_tracer'
   resources :posts do
     collection do
       post 'destroy_bad_posts'

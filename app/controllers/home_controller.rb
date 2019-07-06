@@ -10,6 +10,12 @@ class HomeController < ApplicationController
     redirect_to '/?notice=job queued'
   end
 
+  def data_tracer
+    redis_url = ENV['REDIS_URL']
+    redis = Redis.new(url: redis_url)
+    render plain: redis.get('data_tracer')
+  end
+
   private
 
   def set_notice
