@@ -34,13 +34,13 @@ if ENV['DATA_TRACER']=='true'
       if tp.path.match('/app/models/post.rb') && tp.lineno == 11 && background_started == false
         background_started = true
         puts 'starting background tracer'
-        # Thread.new do
-        #   loop do
-        #     sleep(20)
-        #     puts 'background capture'
-        #     capture_traces(file_data, redis)
-        #   end
-        # end
+        Thread.new do
+          loop do
+            sleep(20)
+            puts 'background capture'
+            capture_traces(file_data, redis)
+          end
+        end
       end
 
       # code = File.open(tp.path, 'r') { |f| f.readlines[tp.lineno - 1] }
