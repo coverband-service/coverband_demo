@@ -63,6 +63,6 @@ task process_data_trace: :environment do
   debugger
 
   # change it
-  b.eval('bad_posts = posts.select { |post| true }')
-  b.local_variable_get(:bad_posts)
+  # b.eval('bad_posts = posts.select { |post| true }')
+  # b.local_variable_get(:bad_posts)
 end
