@@ -8,6 +8,7 @@ if ENV['DATA_TRACER']=='true'
   file = './tmp/data_file_data.json'
 
   current_exception = nil
+  occuring_exception = nil
   current_trace = nil
   previous_return = nil
   current_dump = nil
@@ -111,7 +112,8 @@ if ENV['DATA_TRACER']=='true'
   end
 
   exception_tracer = TracePoint.new(:raise) do |tp|
-    current_exception = tp.raised_exception
+    current_exception = occuring_exception
+    occuring_exception = tp.raised_exception
   end
   exception_tracer.enable
 
@@ -131,11 +133,14 @@ if ENV['DATA_TRACER']=='true'
         current_exception.backtrace.each do |line|
           err_path = line.split(':').first rescue ''
           lineno = line.split(':')[1] rescue ''
+          Rails.logger.info "path #{err_path} #{lineno}"
 
           # filter non app code
           next unless err_path.start_with?(current_root)
           next if err_path.include?('vendor')
           next if err_path.include?('data_tracer')
+
+          Rails.logger.info "capturing path #{err_path} #{lineno}"
 
           # initialize
           file_data[err_path] = {} unless file_data[err_path]
