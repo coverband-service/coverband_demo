@@ -7,7 +7,8 @@ class HomeController < ApplicationController
 
   def trigger_jobs
     HardWorker.perform_async('bob', 5)
-    redirect_to '/?notice=job queued'
+    flash[:notice] = 'job queued'
+    redirect_to :back
   end
 
   def data_tracer
