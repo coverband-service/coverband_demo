@@ -126,10 +126,11 @@ if ENV['DATA_TRACER']=='true'
       # event.respond_to?(:backtrace) ? event.backtrace : event_response['exception']['values'][0]['stacktrace']
 
       # link_to it via https://sentry.io/api/0/organizations/coverband-demo/issues/?limit=25&project=1497449&query=28d935d10f8a4084b3511b4baa958046&shortIdLookup=1&statsPeriod=14d
-      if current_exception
+      if current_exception && current_exception.backtrace
         current_exception.backtrace.each do |line|
-          err_path = line.split(':').first
-          lineno = line.split(':')[1]
+          err_path = line.split(':').first rescue ''
+          lineno = line.split(':')[1] rescue ''
+          Rails.logger.info "path #{err_path} #{lineno}"
 
           # filter non app code
           next unless err_path.start_with?(current_root)
@@ -158,7 +159,9 @@ if ENV['DATA_TRACER']=='true'
     #   previous_data = Marshal.load(redis.get('data_tracer'))
         # file_data.each_pair do |file,lines|
         #   if previous_data['file']
-        #
+        #     lines.each_pair do |line_key, values|
+        #       if file_data[err_path][lineno][line_key]
+        #     end
         #   end
         # end
     #   deep merge
