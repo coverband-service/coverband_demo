@@ -127,16 +127,15 @@ if ENV['DATA_TRACER'] == 'true'
     ### manually deep merge the data
     begin
       previous_data = Marshal.load(redis.get('data_tracer'))
-      file_data.each_pair do |file,lines|
-        if previous_data['file']
-          lines.each_pair do |line_key, values|
+      file_data.each_pair do |file, lines|
+        if previous_data[file]
+          lines.each_pair do |line_key, _values|
             if previous_data[err_path][lineno][line_key]
               file_data[err_path][lineno][line_key] = (file_data[err_path][lineno][line_key] + previous_data[err_path][lineno][line_key]).uniq
             end
           end
         end
       end
-      file_data = file_data.merge(previous_data)
     rescue => error
       Rails.logger.info "failure restoring previous data trace #{error}"
     end
