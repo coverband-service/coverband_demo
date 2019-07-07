@@ -1,6 +1,6 @@
 # Map all code lines back to tests that execute them
 # COVERBAND_DISABLE_AUTO_START=true DATA_TRACER=true bundle exec rails c
-if ENV['DATA_TRACER']
+if ENV['DATA_TRACER']=='true'
   current_root = Dir.pwd
   file = './tmp/data_file_data.json'
 
