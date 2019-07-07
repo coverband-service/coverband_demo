@@ -4,7 +4,7 @@ if ENV['DATA_TRACER']=='true'
   current_root = Dir.pwd
   file = './tmp/data_file_data.json'
 
-  $current_exception = nil
+  current_exception = nil
   current_trace = nil
   previous_return = nil
   current_dump = nil
@@ -72,6 +72,7 @@ if ENV['DATA_TRACER']=='true'
 
   ###
   # Monkey patch a current bug in sentry send_event async
+  # https://github.com/getsentry/raven-ruby/issues/800
   ###
   module Raven
     class Instance
@@ -91,7 +92,6 @@ if ENV['DATA_TRACER']=='true'
               # We have to convert to a JSON-like hash, because background job
               # processors (esp ActiveJob) may not like weird types in the event hash
               # configuration.async.call(evt.to_json_compatible)
-              $current_exception = obj if message_or_exc == "exception"
               configuration.async.call(evt)
             rescue => ex
               logger.error("async event sending failed: #{ex.message}")
@@ -107,6 +107,11 @@ if ENV['DATA_TRACER']=='true'
     end
   end
 
+  exception_tracer = TracePoint.new(:raise) do |tp|
+    current_exception = tp.raised_exception
+  end
+  exception_tracer.enable
+
   Raven.configure do |config|
     config.async = lambda do |event|
       event_response = Raven.send_event(event)
@@ -121,8 +126,8 @@ if ENV['DATA_TRACER']=='true'
       # event.respond_to?(:backtrace) ? event.backtrace : event_response['exception']['values'][0]['stacktrace']
 
       # link_to it via https://sentry.io/api/0/organizations/coverband-demo/issues/?limit=25&project=1497449&query=28d935d10f8a4084b3511b4baa958046&shortIdLookup=1&statsPeriod=14d
-      if $current_exception
-        $current_exception.backtrace.each do |line|
+      if current_exception
+        current_exception.backtrace.each do |line|
           err_path = line.split(':').first
           lineno = line.split(':')[1]
 
@@ -151,6 +156,11 @@ if ENV['DATA_TRACER']=='true'
     ###
     # begin
     #   previous_data = Marshal.load(redis.get('data_tracer'))
+        # file_data.each_pair do |file,lines|
+        #   if previous_data['file']
+        #
+        #   end
+        # end
     #   deep merge
     #   file_data = file_data.merge(previous_data)
     # rescue => error
