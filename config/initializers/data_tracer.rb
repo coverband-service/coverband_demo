@@ -72,6 +72,7 @@ if ENV['DATA_TRACER']=='true'
   Raven.configure do |config|
     config.async = lambda do |event|
       event = Raven.send_event(event)
+      Rails.logger.info "capturing event #{event.id}"
 
       # link_to it via https://sentry.io/api/0/organizations/coverband-demo/issues/?limit=25&project=1497449&query=28d935d10f8a4084b3511b4baa958046&shortIdLookup=1&statsPeriod=14d
       err.backtrace.each do |line|
@@ -80,6 +81,7 @@ if ENV['DATA_TRACER']=='true'
 
         # filter none app code
         next unless err_path.start_with?(current_root)
+
 
         file_data[err_path][lineno]['exception_traces'] = [] unless file_data[err_path][lineno]['exception_traces']
         file_data[err_path][lineno]['exception_traces'] << event.id unless (file_data[err_path][lineno]['exception_traces'].length > 5 || file_data[err_path][lineno]['exception_traces'].include?(event.id))
