@@ -90,6 +90,7 @@ if ENV['DATA_TRACER']=='true'
               # We have to convert to a JSON-like hash, because background job
               # processors (esp ActiveJob) may not like weird types in the event hash
               # configuration.async.call(evt.to_json_compatible)
+              @@current_exception = obj if message_or_exc == "exception"
               configuration.async.call(evt)
             rescue => ex
               logger.error("async event sending failed: #{ex.message}")
@@ -116,22 +117,23 @@ if ENV['DATA_TRACER']=='true'
                    event_response.id
                  end
       Rails.logger.info "Raven capturing event #{event_id}"
-      error_trace = event.backtrace
       # event.respond_to?(:backtrace) ? event.backtrace : event_response['exception']['values'][0]['stacktrace']
 
       # link_to it via https://sentry.io/api/0/organizations/coverband-demo/issues/?limit=25&project=1497449&query=28d935d10f8a4084b3511b4baa958046&shortIdLookup=1&statsPeriod=14d
-      error_trace.each do |line|
-        err_path = line.split(':').first
-        lineno = line.split(':')[1]
+      if @@current_exception
+        @@current_exception.backtrace.each do |line|
+          err_path = line.split(':').first
+          lineno = line.split(':')[1]
 
-        # filter non app code
-        next unless err_path.start_with?(current_root)
-        next if err_path.include?('vendor')
+          # filter non app code
+          next unless err_path.start_with?(current_root)
+          next if err_path.include?('vendor')
 
-        file_data[err_path][lineno]['exception_traces'] = [] unless file_data[err_path][lineno]['exception_traces']
-        unless (file_data[err_path][lineno]['exception_traces'].length > 5 || file_data[err_path][lineno]['exception_traces'].include?(event_id))
-          file_data[err_path][lineno]['exception_traces'] << event_id
-          Rails.logger.info "adding exception trace #{event_id}"
+          file_data[err_path][lineno]['exception_traces'] = [] unless file_data[err_path][lineno]['exception_traces']
+          unless (file_data[err_path][lineno]['exception_traces'].length > 5 || file_data[err_path][lineno]['exception_traces'].include?(event_id))
+            file_data[err_path][lineno]['exception_traces'] << event_id
+            Rails.logger.info "adding exception trace #{event_id}"
+          end
         end
       end
     end
@@ -148,6 +150,8 @@ if ENV['DATA_TRACER']=='true'
     ###
     # begin
     #   previous_data = Marshal.load(redis.get('data_tracer'))
+    #   deep merge
+    #   file_data = file_data.merge(previous_data)
     # rescue => error
     #   Rails.logger.info "failure restoring previous data trace #{error}"
     # end
