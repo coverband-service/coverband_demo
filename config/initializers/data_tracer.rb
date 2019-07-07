@@ -73,12 +73,11 @@ if ENV['DATA_TRACER']=='true'
     config.async = lambda do |event|
       event = Raven.send_event(event)
       event_id = if event.is_a?(Hash)
-                   Rails.logger.info "event hash #{event.inspect}"
-                   'c24c8409d6fb4b94883d70232364fb38'
+                   event['event_id']
                  else
-                   Rails.logger.info "capturing event #{event.id}"
                    event.id
                  end
+      Rails.logger.info "capturing event #{event_id}"
 
       # link_to it via https://sentry.io/api/0/organizations/coverband-demo/issues/?limit=25&project=1497449&query=28d935d10f8a4084b3511b4baa958046&shortIdLookup=1&statsPeriod=14d
       err.backtrace.each do |line|
