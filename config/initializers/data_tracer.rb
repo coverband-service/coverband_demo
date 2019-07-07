@@ -149,7 +149,7 @@ if ENV['DATA_TRACER']=='true'
       event_id = if event_response.is_a?(Hash)
                    event_response['event_id']
                  else
-                   event_response.id
+                   event.id
                  end
       Rails.logger.info "Raven capturing event #{event_id}"
       # event.respond_to?(:backtrace) ? event.backtrace : event_response['exception']['values'][0]['stacktrace']
