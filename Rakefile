@@ -15,6 +15,13 @@ task posts_cleanup: :environment do
   Post.clear_bad_posts(all: true)
 end
 
+desc 'clear data tracer'
+task clear_data_trace: :environment do
+  redis_url = ENV['REDIS_URL']
+  redis = Redis.new(url: redis_url)
+  redis.set('data_tracer', '')
+end
+
 # DATA_FILE=~/Downloads/data_tracer.txt bundle exec rake process_data_trace
 desc 'process data tracer'
 task process_data_trace: :environment do
