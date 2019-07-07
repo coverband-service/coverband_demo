@@ -1,5 +1,8 @@
-# Map all code lines back to tests that execute them
+# Use a few technique to map runtime code activity to lines
 # COVERBAND_DISABLE_AUTO_START=true DATA_TRACER=true bundle exec rails c
+#
+# NOTE: This entire section of code is an experiment for a technical talk
+# beware as below there be dragons.
 if ENV['DATA_TRACER']=='true'
   current_root = Dir.pwd
   file = './tmp/data_file_data.json'
@@ -116,8 +119,6 @@ if ENV['DATA_TRACER']=='true'
     config.async = lambda do |event|
       event_response = Raven.send_event(event)
       event_id = if event_response.is_a?(Hash)
-                   Rails.logger.info "original #{event.inspect}"
-                   Rails.logger.info "response #{event_response}"
                    event_response['event_id']
                  else
                    event_response.id
@@ -130,7 +131,6 @@ if ENV['DATA_TRACER']=='true'
         current_exception.backtrace.each do |line|
           err_path = line.split(':').first rescue ''
           lineno = line.split(':')[1] rescue ''
-          Rails.logger.info "path #{err_path} #{lineno}"
 
           # filter non app code
           next unless err_path.start_with?(current_root)
