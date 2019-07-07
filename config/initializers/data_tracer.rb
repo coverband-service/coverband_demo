@@ -3,6 +3,8 @@
 #
 # NOTE: This entire section of code is an experiment for a technical talk
 # beware as below there be dragons.
+#
+# DO NOT USE IN PRODUCTION IT COULD EXPOSE YOUR ENV & DB SECRETS
 if ENV['DATA_TRACER'] == 'true'
   current_root = Dir.pwd
   file = './tmp/data_file_data.json'
@@ -41,7 +43,7 @@ if ENV['DATA_TRACER'] == 'true'
         puts 'starting background tracer'
         Thread.new do
           loop do
-            sleep(20)
+            sleep(30)
             puts 'background capture'
             capture_traces(file_data, redis)
           end
@@ -122,24 +124,22 @@ if ENV['DATA_TRACER'] == 'true'
       puts "file_data post: #{file_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb']}"
     end
 
-    ###
-    # begin
-    #   manually deep merge the data
-    #   previous_data = Marshal.load(redis.get('data_tracer'))
-        # file_data.each_pair do |file,lines|
-        #   if previous_data['file']
-        #     lines.each_pair do |line_key, values|
-        #       if previous_data[err_path][lineno][line_key]
-        #          file_data[err_path][lineno][line_key] = (file_data[err_path][lineno][line_key] + previous_data[err_path][lineno][line_key]).uniq
-        #       end
-        #     end
-        #   end
-        # end
-    #   file_data = file_data.merge(previous_data)
-    # rescue => error
-    #   Rails.logger.info "failure restoring previous data trace #{error}"
-    # end
-    ###
+    ### manually deep merge the data
+    begin
+      previous_data = Marshal.load(redis.get('data_tracer'))
+      file_data.each_pair do |file,lines|
+        if previous_data['file']
+          lines.each_pair do |line_key, values|
+            if previous_data[err_path][lineno][line_key]
+              file_data[err_path][lineno][line_key] = (file_data[err_path][lineno][line_key] + previous_data[err_path][lineno][line_key]).uniq
+            end
+          end
+        end
+      end
+      file_data = file_data.merge(previous_data)
+    rescue => error
+      Rails.logger.info "failure restoring previous data trace #{error}"
+    end
 
     dump = Marshal.dump(file_data)
     redis.set('data_tracer', dump)
