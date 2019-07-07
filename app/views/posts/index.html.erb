@@ -36,4 +36,6 @@
   <%= link_to 'Destroy Bad Posts', destroy_bad_posts_posts_path, method: :post, data: { confirm: 'Are you sure?' } %>
   <br/>
   <%= link_to 'Dangerously Destroy Bad Posts', destroy_bad_dangerously_posts_path, method: :post, data: { confirm: 'Are you sure?' } %>
+  <br/>
+  <%= link_to 'Clear via Background Job', '/trigger_jobs' %>
 </div>

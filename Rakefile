@@ -27,14 +27,18 @@ task process_data_trace: :environment do
 
   all_data = Marshal.load(File.binread(data_file))
 
+  file_path = all_data.keys.select{ |key| key.match('app/models/post.rb') }.first
+
   puts 'traces for post model line 11'
-  puts all_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb'][11]['caller_traces'].map{ |trace| trace.split(',')[1] }
+  puts all_data[file_path][11]['caller_traces'].map{ |trace| trace.split(',')[1] }
 
-  puts 'exceptions for post model line 14'
-  puts all_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb'][14]['exception_traces']
+  if all_data[file_path][14]
+    puts 'exceptions for post model line 14'
+    puts all_data[file_path][14]['exception_traces']
+  end
 
-  all_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb'][11]['recent_bindings']
-  b = Binding.load(all_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb'][11]['recent_bindings'].first)
+  all_data[file_path][11]['recent_bindings']
+  b = Binding.load(all_data[file_path][11]['recent_bindings'].first)
 
   # this part doesn't work, we should be able to enter into the binding...
   # but we can access and execute in it's context
@@ -44,9 +48,9 @@ task process_data_trace: :environment do
   puts 'what are the local variables?'
   puts b.eval('local_variables').join(', ')
   puts 'what is the value of the posts variable?'
-  puts b.local_variable_get(:posts)
+  puts b.local_variable_get(:posts).inspect
   puts 'what is the value of the posts variable?'
-  puts b.local_variable_get(:bad_posts)
+  puts b.local_variable_get(:bad_posts).inspect
 
   debugger
 
