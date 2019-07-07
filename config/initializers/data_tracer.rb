@@ -73,11 +73,13 @@ if ENV['DATA_TRACER']=='true'
     config.async = lambda do |event|
       event_response = Raven.send_event(event)
       event_id = if event_response.is_a?(Hash)
+                   Rails.logger.info "original #{event.inspect}"
+                   Rails.logger.info "response #{event_response}"
                    event_response['event_id']
                  else
                    event_response.id
                  end
-      Rails.logger.info "capturing event #{event_id}"
+      Rails.logger.info "Raven capturing event #{event_id}"
       error_trace = event.backtrace
       # event.respond_to?(:backtrace) ? event.backtrace : event_response['exception']['values'][0]['stacktrace']
 
@@ -86,9 +88,9 @@ if ENV['DATA_TRACER']=='true'
         err_path = line.split(':').first
         lineno = line.split(':')[1]
 
-        # filter none app code
+        # filter non app code
         next unless err_path.start_with?(current_root)
-
+        next if err_path.include?('vendor')
 
         file_data[err_path][lineno]['exception_traces'] = [] unless file_data[err_path][lineno]['exception_traces']
         unless (file_data[err_path][lineno]['exception_traces'].length > 5 || file_data[err_path][lineno]['exception_traces'].include?(event_id))
