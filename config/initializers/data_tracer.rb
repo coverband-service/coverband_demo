@@ -114,9 +114,9 @@ if ENV['DATA_TRACER']=='true'
 
   exception_tracer = TracePoint.new(:raise) do |tp|
     current_exception = tp.raised_exception
-    Rails.logger.info "tracepoint capturing exception: #{current_exception.inspect}"
     # link_to it via https://sentry.io/api/0/organizations/coverband-demo/issues/?limit=25&project=1497449&query=28d935d10f8a4084b3511b4baa958046&shortIdLookup=1&statsPeriod=14d
     if current_exception && current_exception.backtrace && event_id
+      Rails.logger.info "tracepoint capturing exception: #{current_exception.inspect}"
       current_exception.backtrace.each do |line|
         err_path = line.split(':').first rescue ''
         lineno = line.split(':')[1] rescue ''
