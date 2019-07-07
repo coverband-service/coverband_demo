@@ -135,6 +135,11 @@ if ENV['DATA_TRACER']=='true'
           # filter non app code
           next unless err_path.start_with?(current_root)
           next if err_path.include?('vendor')
+          next if err_path.include?('data_tracer')
+
+          # initialize
+          file_data[err_path] = {} unless file_data[err_path]
+          file_data[err_path][lineno] = {} unless file_data[err_path][lineno]
 
           file_data[err_path][lineno]['exception_traces'] = [] unless file_data[err_path][lineno]['exception_traces']
           unless (file_data[err_path][lineno]['exception_traces'].length > 5 || file_data[err_path][lineno]['exception_traces'].include?(event_id))
@@ -160,7 +165,9 @@ if ENV['DATA_TRACER']=='true'
         # file_data.each_pair do |file,lines|
         #   if previous_data['file']
         #     lines.each_pair do |line_key, values|
-        #       if file_data[err_path][lineno][line_key]
+        #       if previous_data[err_path][lineno][line_key]
+        #          file_data[err_path][lineno][line_key] = (file_data[err_path][lineno][line_key] + previous_data[err_path][lineno][line_key]).uniq
+        #       end
         #     end
         #   end
         # end
