@@ -49,7 +49,7 @@ task process_data_trace: :environment do
   puts b.eval('local_variables').join(', ')
   puts 'what is the value of the posts variable?'
   puts b.local_variable_get(:posts).inspect
-  puts 'what is the value of the posts variable?'
+  puts 'what is the value of the bad posts variable?'
   puts b.local_variable_get(:bad_posts).inspect
 
   debugger

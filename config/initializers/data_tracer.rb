@@ -71,16 +71,18 @@ if ENV['DATA_TRACER']=='true'
 
   Raven.configure do |config|
     config.async = lambda do |event|
-      event = Raven.send_event(event)
-      event_id = if event.is_a?(Hash)
-                   event['event_id']
+      event_response = Raven.send_event(event)
+      event_id = if event_response.is_a?(Hash)
+                   event_response['event_id']
                  else
-                   event.id
+                   event_response.id
                  end
       Rails.logger.info "capturing event #{event_id}"
+      error_trace = event.backtrace
+      # event.respond_to?(:backtrace) ? event.backtrace : event_response['exception']['values'][0]['stacktrace']
 
       # link_to it via https://sentry.io/api/0/organizations/coverband-demo/issues/?limit=25&project=1497449&query=28d935d10f8a4084b3511b4baa958046&shortIdLookup=1&statsPeriod=14d
-      err.backtrace.each do |line|
+      error_trace.each do |line|
         err_path = line.split(':').first
         lineno = line.split(':')[1]
 
@@ -89,7 +91,10 @@ if ENV['DATA_TRACER']=='true'
 
 
         file_data[err_path][lineno]['exception_traces'] = [] unless file_data[err_path][lineno]['exception_traces']
-        file_data[err_path][lineno]['exception_traces'] << event_id unless (file_data[err_path][lineno]['exception_traces'].length > 5 || file_data[err_path][lineno]['exception_traces'].include?(event_id))
+        unless (file_data[err_path][lineno]['exception_traces'].length > 5 || file_data[err_path][lineno]['exception_traces'].include?(event_id))
+          file_data[err_path][lineno]['exception_traces'] << event_id
+          Rails.logger.info "adding exception trace #{event_id}"
+        end
       end
     end
   end
