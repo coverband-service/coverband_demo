@@ -72,7 +72,7 @@ if ENV['DATA_TRACER']=='true'
   Raven.configure do |config|
     config.async = lambda do |event|
       event = Raven.send_event(event)
-      event_id = if event.is_a?(HASH)
+      event_id = if event.is_a?(Hash)
                    Rails.logger.info "event hash #{event.inspect}"
                    'c24c8409d6fb4b94883d70232364fb38'
                  else
