@@ -37,6 +37,7 @@ task process_data_trace: :environment do
   file_path = all_data.keys.select{ |key| key.match('app/models/post.rb') }.first
 
   puts 'traces for post model line 11'
+  debugger
   puts all_data[file_path][11]['caller_traces'].map{ |trace| trace.split(',')[1] }
 
   if all_data[file_path][14]
