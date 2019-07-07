@@ -114,6 +114,7 @@ if ENV['DATA_TRACER']=='true'
   exception_tracer = TracePoint.new(:raise) do |tp|
     current_exception = occuring_exception
     occuring_exception = tp.raised_exception
+    Rails.logger.info "tracepoint capturing exception: #{occuring_exception.inspect}"
   end
   exception_tracer.enable
 
@@ -166,6 +167,7 @@ if ENV['DATA_TRACER']=='true'
 
     ###
     # begin
+    #   manually deep merge the data
     #   previous_data = Marshal.load(redis.get('data_tracer'))
         # file_data.each_pair do |file,lines|
         #   if previous_data['file']
@@ -176,7 +178,6 @@ if ENV['DATA_TRACER']=='true'
         #     end
         #   end
         # end
-    #   deep merge
     #   file_data = file_data.merge(previous_data)
     # rescue => error
     #   Rails.logger.info "failure restoring previous data trace #{error}"
