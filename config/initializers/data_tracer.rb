@@ -69,6 +69,42 @@ if ENV['DATA_TRACER']=='true'
   end
   line_trace.enable
 
+  ###
+  # Monkey patch a current bug in sentry send_event async
+  ###
+  module Raven
+    class Instance
+      def capture_type(obj, options = {})
+        unless configuration.capture_allowed?(obj)
+          logger.debug("#{obj} excluded from capture: #{configuration.error_messages}")
+          return false
+        end
+
+        message_or_exc = obj.is_a?(String) ? "message" : "exception"
+        options[:configuration] = configuration
+        options[:context] = context
+        if (evt = Event.send("from_" + message_or_exc, obj, options))
+          yield evt if block_given?
+          if configuration.async?
+            begin
+              # We have to convert to a JSON-like hash, because background job
+              # processors (esp ActiveJob) may not like weird types in the event hash
+              # configuration.async.call(evt.to_json_compatible)
+              configuration.async.call(evt)
+            rescue => ex
+              logger.error("async event sending failed: #{ex.message}")
+              send_event(evt)
+            end
+          else
+            send_event(evt)
+          end
+          Thread.current["sentry_#{object_id}_last_event_id".to_sym] = evt.id
+          evt
+        end
+      end
+    end
+  end
+
   Raven.configure do |config|
     config.async = lambda do |event|
       event_response = Raven.send_event(event)
@@ -108,6 +144,14 @@ if ENV['DATA_TRACER']=='true'
       puts "file_data posts_controller: #{file_data['/Users/danmayer/projects/coverband_demo/app/controllers/posts_controller.rb']}"
       puts "file_data post: #{file_data['/Users/danmayer/projects/coverband_demo/app/models/post.rb']}"
     end
+
+    ###
+    # begin
+    #   previous_data = Marshal.load(redis.get('data_tracer'))
+    # rescue => error
+    #   Rails.logger.info "failure restoring previous data trace #{error}"
+    # end
+    ###
 
     dump = Marshal.dump(file_data)
     redis.set('data_tracer', dump)
