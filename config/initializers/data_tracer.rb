@@ -146,14 +146,11 @@ if ENV['DATA_TRACER'] == 'true'
     config.async = lambda do |event|
       event_response = Raven.send_event(event)
       event_id = if event_response.is_a?(Hash)
-                   Rails.logger.info "event response: #{event_response}"
-                   event_response["event_id"]
+                   event_response["event_id"] || event_response[:event_id]
                  else
-                   Rails.logger.info "event obj: #{event}"
                    event.id
                  end
       Rails.logger.info "Raven capturing event #{event_id}"
-      # event.respond_to?(:backtrace) ? event.backtrace : event_response['exception']['values'][0]['stacktrace']
     end
   end
 
