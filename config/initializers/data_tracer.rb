@@ -3,12 +3,11 @@
 #
 # NOTE: This entire section of code is an experiment for a technical talk
 # beware as below there be dragons.
-if ENV['DATA_TRACER']=='true'
+if ENV['DATA_TRACER'] == 'true'
   current_root = Dir.pwd
   file = './tmp/data_file_data.json'
 
   current_exception = nil
-  occuring_exception = nil
   event_id = nil
   current_trace = nil
   previous_return = nil
@@ -147,8 +146,10 @@ if ENV['DATA_TRACER']=='true'
     config.async = lambda do |event|
       event_response = Raven.send_event(event)
       event_id = if event_response.is_a?(Hash)
-                   event_response['event_id']
+                   Rails.logger.info "event response: #{event_response}"
+                   event_response["event_id"]
                  else
+                   Rails.logger.info "event obj: #{event}"
                    event.id
                  end
       Rails.logger.info "Raven capturing event #{event_id}"
