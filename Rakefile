@@ -35,9 +35,9 @@ task process_data_trace: :environment do
   all_data = Marshal.load(File.binread(data_file))
 
   file_path = all_data.keys.select{ |key| key.match('app/models/post.rb') }.first
+  puts "found file at #{file_path}"
 
   puts 'traces for post model line 11'
-  debugger
   puts all_data[file_path][11]['caller_traces'].map{ |trace| trace.split(',')[1] }
 
   if all_data[file_path][14]
