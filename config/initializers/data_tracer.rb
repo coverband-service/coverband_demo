@@ -130,7 +130,7 @@ if ENV['DATA_TRACER'] == 'true'
       file_data.each_pair do |file, lines|
         if previous_data[file]
           previous_lines = previous_data[file]
-          all_lines = lines + previous_lines.uniq
+          all_lines = (lines.keys + previous_lines.keys).uniq
 
           all_lines.each do |line_no|
             current_values = file_data[file][line_no]
