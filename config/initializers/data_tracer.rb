@@ -149,6 +149,7 @@ if ENV['DATA_TRACER'] == 'true'
               end
             elsif previous_values
               previous_values.keys.each do |line_key|
+                file_data[file][line_no] = {} unless file_data[file][line_no]
                 file_data[file][line_no][line_key] = previous_data[file][line_no][line_key]
               end
             end
