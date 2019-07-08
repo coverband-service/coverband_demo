@@ -129,12 +129,22 @@ if ENV['DATA_TRACER'] == 'true'
       previous_data = Marshal.load(redis.get('data_tracer'))
       file_data.each_pair do |file, lines|
         if previous_data[file]
-          lines.each_pair do |line_no, values|
-            if previous_data[file][line_no]
-              values.keys.each do |line_key|
+          previous_lines = previous_data[file]
+          all_lines = lines + previous_lines.uniq
+
+          all_lines.each do |line_no|
+            current_values = file_data[file][line_no]
+            previous_values = previous_data[file][line_no]
+
+            if current_values && previous_values
+              current_values.keys.each do |line_key|
                 if previous_data[file][line_no][line_key]
                   file_data[file][line_no][line_key] = (file_data[file][line_no][line_key] + previous_data[file][line_no][line_key]).uniq
                 end
+              end
+            elsif previous_values
+              previous_values.keys.each do |line_key|
+                file_data[file][line_no][line_key] = previous_data[file][line_no][line_key]
               end
             end
           end
