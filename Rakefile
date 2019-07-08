@@ -48,26 +48,25 @@ task process_data_trace: :environment do
   puts '-------'
 
   all_data[file_path][11]['recent_bindings']
-  b = Binding.load(all_data[file_path][11]['recent_bindings'].first)
-
-  # this part doesn't work, we should be able to enter into the binding...
-  # but we can access and execute in it's context
-  # b.pry
+  bind = Binding.load(all_data[file_path][11]['recent_bindings'].first)
 
   puts 'execution context of posts function line 11'
   puts 'what are the local variables?'
-  puts b.eval('local_variables').join(', ')
+  puts bind.eval('local_variables').join(', ')
   puts '-------'
   puts 'what is the value of the posts variable?'
-  puts b.local_variable_get(:posts).inspect
+  puts bind.local_variable_get(:posts).inspect
   puts '-------'
   puts 'what is the value of the bad posts variable?'
-  puts b.local_variable_get(:bad_posts).inspect
+  puts bind.local_variable_get(:bad_posts).inspect
   puts '-------'
 
   debugger
 
+  # this part doesn't work, we should be able to enter into the binding...
+  # but we can access and execute in it's context
+  # bind.pry
   # change it
-  # b.eval('bad_posts = posts.select { |post| true }')
-  # b.local_variable_get(:bad_posts)
+  # bind.eval('bad_posts = posts.select { |post| true }')
+  # bind.local_variable_get(:bad_posts)
 end

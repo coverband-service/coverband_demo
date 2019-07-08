@@ -12,9 +12,13 @@ class HomeController < ApplicationController
   end
 
   def data_tracer
-    redis_url = ENV['REDIS_URL']
-    redis = Redis.new(url: redis_url)
-    render plain: redis.get('data_tracer')
+    if !Rails.env.production? || params[:data_trace_api_key] == ENV['DATA_TRACE_API_KEY']
+      redis_url = ENV['REDIS_URL']
+      redis = Redis.new(url: redis_url)
+      render plain: redis.get('data_tracer')
+    else
+      render plain: 'invalid API key'
+    end
   end
 
   private
