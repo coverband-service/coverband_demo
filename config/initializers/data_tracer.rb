@@ -83,7 +83,7 @@ if ENV['DATA_TRACER'] == 'true'
       Rails.logger.info "tracepoint capturing exception: #{current_exception}"
       current_exception.backtrace.each do |line|
         err_path = line.split(':').first rescue ''
-        lineno = line.split(':')[1] rescue ''
+        lineno = line.split(':')[1].to_i rescue ''
 
         # filter non app code
         next unless err_path.start_with?(current_root)
