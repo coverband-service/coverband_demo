@@ -80,7 +80,6 @@ if ENV['DATA_TRACER'] == 'true'
     current_exception = tp.raised_exception
     # link_to it via https://sentry.io/api/0/organizations/coverband-demo/issues/?limit=25&project=1497449&query=28d935d10f8a4084b3511b4baa958046&shortIdLookup=1&statsPeriod=14d
     if current_exception && current_exception.backtrace && event_id
-      Rails.logger.info "tracepoint capturing exception: #{current_exception}"
       current_exception.backtrace.each do |line|
         err_path = line.split(':').first rescue ''
         lineno = line.split(':')[1].to_i rescue ''
@@ -89,6 +88,8 @@ if ENV['DATA_TRACER'] == 'true'
         next unless err_path.start_with?(current_root)
         next if err_path.include?('vendor')
         next if err_path.include?('data_tracer')
+
+        Rails.logger.info "tracepoint capturing exception: #{current_exception}"
 
         # initialize
         file_data[err_path] = {} unless file_data[err_path]
@@ -127,9 +128,13 @@ if ENV['DATA_TRACER'] == 'true'
     ### manually deep merge the data
     begin
       previous_data = Marshal.load(redis.get('data_tracer'))
-      file_data.each_pair do |file, lines|
-        if previous_data[file]
+
+      all_files = (previous_data.keys + file_data.keys).uniq
+      all_files.each do |file|
+        if previous_data[file] && file_data[file]
           previous_lines = previous_data[file]
+          lines = file_data[file]
+
           all_lines = (lines.keys + previous_lines.keys).uniq
 
           all_lines.each do |line_no|
@@ -148,10 +153,13 @@ if ENV['DATA_TRACER'] == 'true'
               end
             end
           end
+        elsif previous_data[file]
+          file_data[file] = previous_data[file]
         end
       end
     rescue => error
       Rails.logger.info "failure restoring previous data trace #{error}"
+      Rails.logger.info "trace: #{error.backtrace.join(', ')}"
     end
 
     dump = Marshal.dump(file_data)
