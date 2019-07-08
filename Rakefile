@@ -39,11 +39,13 @@ task process_data_trace: :environment do
 
   puts 'traces for post model line 11'
   puts all_data[file_path][11]['caller_traces'].map{ |trace| trace.split(',')[1] }
+  puts '-------'
 
   if all_data[file_path][14]
     puts 'exceptions for post model line 14'
     puts all_data[file_path][14]['exception_traces']
   end
+  puts '-------'
 
   all_data[file_path][11]['recent_bindings']
   b = Binding.load(all_data[file_path][11]['recent_bindings'].first)
@@ -55,10 +57,13 @@ task process_data_trace: :environment do
   puts 'execution context of posts function line 11'
   puts 'what are the local variables?'
   puts b.eval('local_variables').join(', ')
+  puts '-------'
   puts 'what is the value of the posts variable?'
   puts b.local_variable_get(:posts).inspect
+  puts '-------'
   puts 'what is the value of the bad posts variable?'
   puts b.local_variable_get(:bad_posts).inspect
+  puts '-------'
 
   debugger
 
