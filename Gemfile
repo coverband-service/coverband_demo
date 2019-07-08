@@ -42,6 +42,8 @@ gem 'jbuilder', '~> 2.5'
 # When explaining observability
 gem 'newrelic_rpm'
 gem "sentry-raven"
+# exploring dumping all lines
+gem 'binding_dumper'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -82,9 +84,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Current Coverband development release
 gem 'coverband', '= 4.2.1.rc4'
-
-# exploring dumping all lines
-gem 'binding_dumper'
 
 # For local gem file testing
 # gem 'coverband', '>= 4.2.1.rc4', path: '/Users/danmayer/projects/coverband', require: false
