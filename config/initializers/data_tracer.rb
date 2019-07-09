@@ -37,7 +37,8 @@ if ENV['DATA_TRACER'] == 'true'
        !tp.path.include?('.erb')
       current_trace = Kernel.caller_locations[0...20]
 
-      # hack to start background tracer
+      # TODO: quick hack to start background tracer
+      # do something more similar to Coverband middleware
       if tp.path.match('/app/models/post.rb') && tp.lineno == 11 && background_started == false
         background_started = true
         puts 'starting background tracer'
@@ -55,8 +56,8 @@ if ENV['DATA_TRACER'] == 'true'
          tp.path.match('/app/controllers/posts_controller.rb')
         current_dump = begin
                   tp.binding.dump
-                 rescue => e
-                  puts "dumper had an error"
+                rescue => e
+                  puts "dumper had an error #{e}"
                   { failed: 'binding dumper failed' }
                 end
       end
@@ -158,9 +159,9 @@ if ENV['DATA_TRACER'] == 'true'
           file_data[file] = previous_data[file]
         end
       end
-    rescue => error
-      Rails.logger.info "failure restoring previous data trace #{error}"
-      Rails.logger.info "trace: #{error.backtrace.join(', ')}"
+    rescue => e
+      Rails.logger.info "failure restoring previous data trace #{e}"
+      Rails.logger.info "trace: #{e.backtrace.join(', ')}"
     end
 
     dump = Marshal.dump(file_data)
@@ -170,9 +171,9 @@ if ENV['DATA_TRACER'] == 'true'
   at_exit do
     begin
       capture_traces(file_data, redis)
-    rescue
+    rescue => e
       # ignore heroku precompile:assets error
-      puts "at_exit capture error"
+      puts "at_exit capture error #{e}"
     end
 
     # JSON doesn't store as utf-8
