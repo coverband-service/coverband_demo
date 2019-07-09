@@ -1,0 +1,34 @@
+> 2018-08-02 D. Mayer initial pages to view coverage
+> 2019-07-04 D. Mayer examples of observability
+
+
+
+> 2019-07-06 D. Mayer improve test examples
+> 2019-07-04 D. Mayer examples of observability
+> 2019-07-04 D. Mayer add ability to cause exception
+> 2019-07-04 D. Mayer examples of observability
+
+> 2019-07-04 D. Mayer add all conditional
+  ^ coverage
+     > test
+     > staging
+     > production
+  ^ invoked_by_tests (execute tests ↪)
+     . PostTest#test_clear_bad_posts_clears_one_bad_post
+     . PostTest#test_clear_bad_posts_dangerously_can_throw_exceptions
+     . PostTest#test_clear_bad_posts_clears_all_bad_posts
+  ^ recent_requests
+     . Started POST "/posts/destroy_bad_posts" 31d55613 ↪
+     . Started POST "/posts/destroy_bad_dangerously" 7223a5a9 ↪
+  ^ exceptions
+     . NameError: undefined local variable all #275cfed ↪
+  > profiling
+  ^ entrypoint_backtraces
+     > /app/controllers/posts_controller.rb:74:in `destroy_bad_dangerously'
+     > /app/controllers/posts_controller.rb:66:in `destroy_bad_posts'
+     > /app/workers/hard_worker.rb:6:in `perform'
+     > /Rakefile:15:in `block in <top (required)>
+  ^ recent_bindings
+     > bad_posts([]), posts([<Post>, ...]), dangerous(false), all(false) ↪
+     > bad_posts([<Post>]), posts([<Post>, ...]), dangerous(false), all(true) ↪
+  > churn

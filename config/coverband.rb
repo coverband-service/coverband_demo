@@ -18,10 +18,10 @@ Coverband.configure do |config|
   config.web_debug = true
 
   # toggle on and off tracking gems
-  # config.track_gems = true
+  config.track_gems = true
 
   # toggle on and off gem file details
-  # config.gem_details = true
+  config.gem_details = true
 
   # ignores bin started to show in runtime only ;)
   # NOTE: that activerecord/* shows how to ignore gems
