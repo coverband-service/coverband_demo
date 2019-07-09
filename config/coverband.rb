@@ -34,7 +34,16 @@ Coverband.configure do |config|
                       config/environments/test.rb
                       config/environments/development.rb
                       config/environments/production.rb
-                      activerecord/*]
+                      activerecord/*
+                      actionpack/*
+                      actionview/*
+                      actionmailer/*
+                      activemodel/*
+                      activestorage/*
+                      activesupport/*
+                      activejob/*
+                      coverband/*
+                      rails-dom-testing/*]
 
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'
