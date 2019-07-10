@@ -25,7 +25,7 @@ end
 # DATA_FILE=~/Downloads/data_tracer.txt bundle exec rake process_data_trace
 desc 'process data tracer'
 task process_data_trace: :environment do
-  data_file = ENV['DATA_FILE']
+  data_file = ENV['DATA_FILE'] || File.expand_path('~/Downloads/data_tracer.txt')
 
   unless data_file
     puts 'you must set the data file path DATA_FILE'
