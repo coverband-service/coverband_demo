@@ -30,6 +30,7 @@ Coverband.configure do |config|
                       config/puma.rb
                       config/coverband.rb
                       bin/*
+                      config/initializers/*
                       config/spring.rb
                       config/environments/test.rb
                       config/environments/development.rb
@@ -43,7 +44,8 @@ Coverband.configure do |config|
                       activesupport/*
                       activejob/*
                       coverband/*
-                      rails-dom-testing/*]
+                      rails-dom-testing/*
+                      execjs/*]
 
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'
