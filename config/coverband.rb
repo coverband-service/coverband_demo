@@ -49,7 +49,8 @@ Coverband.configure do |config|
                       sprockets-rails/*
                       minitest/*
                       puma/*
-                      rainbows/*]
+                      rainbows/*
+                      some_gem/*]
 
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'
