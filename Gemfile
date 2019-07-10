@@ -80,10 +80,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'combined', require: false
 
 # Current Coverband Release
-# gem 'coverband', '= 4.2.0'
+gem 'coverband', '= 4.2.1'
 
 # Current Coverband development release
-gem 'coverband', '= 4.2.1.rc4'
+# gem 'coverband', '= 4.2.1.rc4'
 
 # For local gem file testing
 # gem 'coverband', '>= 4.2.1.rc4', path: '/Users/danmayer/projects/coverband', require: false
