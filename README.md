@@ -28,4 +28,4 @@ The initial design off the demo site was pulled from a demo'ed theme, a Material
     - `ruby_version, branch or PR name, benchmark_name, calculations -> {data_point_name, i/s, total iterations, total time}, Comparison -> {data_point_name, i/s, diff calculation, note}`
 - a way to toggle modes?
   - oneshot, simulated, or regular
-- investigate issues with runtime data vs load data when running `heroku run --app coverband-demo rake posts_cleanup` (note: COVERBAND_DISABLE_AT_EXIT fixes but then doesn't track rake)
+- investigate issues with runtime data vs load data when running `heroku run --app coverband-demo rake posts_cleanup` (note: COVERBAND_DISABLE_AT_EXIT fixes but then doesn't track rake, hmm not entirely true, not clear)
