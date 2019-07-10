@@ -45,7 +45,11 @@ Coverband.configure do |config|
                       activejob/*
                       coverband/*
                       rails-dom-testing/*
-                      execjs/*]
+                      execjs/*
+                      sprockets-rails/*
+                      minitest/*
+                      puma/*
+                      rainbows/*]
 
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'
