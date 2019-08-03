@@ -21,7 +21,7 @@ jobs:
     working_directory: ~/repo
 
     environment:
-      TEST_TRACER: false
+      TEST_TRACER: true
       PG_HOST: localhost
       PG_USER: postgres
       RAILS_ENV: test
