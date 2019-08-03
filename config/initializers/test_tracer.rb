@@ -2,7 +2,7 @@
 # TEST_TRACER=true bundle exec rake
 if ENV['TEST_TRACER'] && ENV['TEST_TRACER'] != 'false'
   current_root = Dir.pwd
-  file = './tmp/test_file_data.json'
+  file = './test/reports/test_file_data.json'
 
   current_test = nil
   file_data = {}
