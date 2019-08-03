@@ -59,7 +59,7 @@ jobs:
             TEST_FILES="$(circleci tests glob "test/**/*_test.rb" | \
               circleci tests split --split-by=timings)"
 
-            TEST_TRACER=true bundle exec rake test
+            bundle exec rake test
 
       # collect reports
       - store_test_results:
