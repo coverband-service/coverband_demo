@@ -10,7 +10,7 @@ if ENV['TEST_TRACER'] && ENV['TEST_TRACER'] != 'false'
   puts 'starting tracer'
   call_trace = TracePoint.new(:call) do |tp|
     if tp.path.start_with?(current_root)
-      if tp.defined_class.to_s.match(/Test/)
+      if tp.defined_class.to_s.match(/Test/) && !tp.path.include?('vendor')
         current_test = "#{tp.defined_class}\##{tp.method_id}"
         # puts "setting current_test #{current_test}"
       end
@@ -33,8 +33,8 @@ if ENV['TEST_TRACER'] && ENV['TEST_TRACER'] != 'false'
   line_trace.enable
 
   at_exit do
-    puts 'mapped files to tests: '
-    puts file_data
+    # puts 'mapped files to tests: '
+    # puts file_data
     File.open(file, 'w') { |f| f.write(file_data.to_json) }
   end
 end
