@@ -9,8 +9,8 @@ if ENV['TEST_TRACER'] && ENV['TEST_TRACER'] != 'false'
 
   puts 'starting tracer'
   call_trace = TracePoint.new(:call) do |tp|
-    if tp.path.start_with?(current_root)
-      if tp.defined_class.to_s.match(/Test/) && !tp.path.include?('vendor')
+    if tp.path.start_with?(current_root) && !tp.path.include?('vendor')
+      if tp.defined_class.to_s.match(/Test/)
         current_test = "#{tp.defined_class}\##{tp.method_id}"
         # puts "setting current_test #{current_test}"
       end
