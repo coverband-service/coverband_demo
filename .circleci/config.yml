@@ -25,6 +25,7 @@ jobs:
       PG_HOST: localhost
       PG_USER: postgres
       RAILS_ENV: test
+      DATABASE_URL: postgres://postgres@127.0.0.1:5432/coverband_demo_test
 
     steps:
       - checkout
