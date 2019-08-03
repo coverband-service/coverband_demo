@@ -29,3 +29,5 @@
 /config/master.key
 /coverage/*
 .env
+
+test/reports
