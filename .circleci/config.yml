@@ -21,7 +21,6 @@ jobs:
     working_directory: ~/repo
 
     environment:
-      TEST_TRACER: true
       PG_HOST: localhost
       PG_USER: postgres
       RAILS_ENV: test
@@ -62,7 +61,7 @@ jobs:
             TEST_FILES="$(circleci tests glob "test/**/*_test.rb" | \
               circleci tests split --split-by=timings)"
 
-            bundle exec rake test
+            TEST_TRACER=true bundle exec rake test
 
       # collect reports
       - store_test_results:
