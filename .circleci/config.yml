@@ -49,8 +49,7 @@ jobs:
 
       # Database setup
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:migrate
+      - run: bundle exec rake db:reset db:migrate
 
       # run tests!
       - run:
