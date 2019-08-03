@@ -1,6 +1,6 @@
 # Map all code lines back to tests that execute them
 # TEST_TRACER=true bundle exec rake
-if ENV['TEST_TRACER']
+if ENV['TEST_TRACER'] && ENV['TEST_TRACER'] != 'false'
   current_root = Dir.pwd
   file = './tmp/test_file_data.json'
 
