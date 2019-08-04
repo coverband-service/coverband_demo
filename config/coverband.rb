@@ -43,7 +43,6 @@ Coverband.configure do |config|
                       activestorage/*
                       activesupport/*
                       activejob/*
-                      coverband/*
                       rails-dom-testing/*
                       execjs/*
                       sprockets-rails/*
