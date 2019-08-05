@@ -21,11 +21,12 @@ if ENV['TEST_TRACER'] && ENV['TEST_TRACER'] != 'false'
   line_trace = TracePoint.new(:line) do |tp|
     if tp.path.start_with?(current_root) && !tp.path.include?('test') && !tp.path.include?('vendor')
       if current_test
-        file_data[tp.path] = {} unless file_data[tp.path]
-        file_data[tp.path][tp.lineno] = {} unless file_data[tp.path][tp.lineno]
-        file_data[tp.path][tp.lineno]['invoked_by_test'] = [] unless file_data[tp.path][tp.lineno]['invoked_by_test']
-        unless file_data[tp.path][tp.lineno]['invoked_by_test'].include?(current_test)
-          file_data[tp.path][tp.lineno]['invoked_by_test'] << current_test
+        relative_path = tp.path.gsub(current_root, '')
+        file_data[relative_path] = {} unless file_data[relative_path]
+        file_data[relative_path][tp.lineno] = {} unless file_data[relative_path][tp.lineno]
+        file_data[relative_path][tp.lineno]['invoked_by_test'] = [] unless file_data[relative_path][tp.lineno]['invoked_by_test']
+        unless file_data[relative_path][tp.lineno]['invoked_by_test'].include?(current_test)
+          file_data[relative_path][tp.lineno]['invoked_by_test'] << current_test
         end
       end
     end
