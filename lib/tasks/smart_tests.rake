@@ -6,4 +6,12 @@ namespace :smart_tests do
     `curl #{test_results_url}?circle-token=$COVERBAND_DEMO_CIRCLE_KEY > tmp/test_file_data.json`
     puts `cat tmp/test_file_data.json`
   end
+
+  desc 'find tests for line'
+  task :for_line do
+    test_data = JSON.parse(File.read('tmp/test_file_data.json'))
+    debugger
+    puts "run: "
+    puts "ruby test/models/post_test.rb"
+  end
 end
