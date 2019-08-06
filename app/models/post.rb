@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   def self.clear_bad_posts(all: false, dangerous: false)
     posts = Post.all
     bad_posts = posts.select { |post| post.title.blank? || post.body.blank? }
-    if all
+    if all || bad_posts&.length == 1
       bad_posts.map(&:destroy!)
     elsif dangerous
       bad_posts.first.destroy!

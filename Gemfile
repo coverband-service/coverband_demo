@@ -72,6 +72,8 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'minitest-ci'
+  gem 'minitest-reporters'
+  gem 'm'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -81,10 +83,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # gem 'coverband', '>= 4.2.1.rc4', git: 'https://github.com/danmayer/coverband.git', branch: 'combined', require: false
 
 # Current Coverband Release
-gem 'coverband', '= 4.2.1'
+# gem 'coverband', '= 4.2.1'
 
 # Current Coverband development release
 # gem 'coverband', '= 4.2.1.rc4'
 
 # For local gem file testing
-# gem 'coverband', '>= 4.2.1.rc4', path: '/Users/danmayer/projects/coverband', require: false
+gem 'coverband', '>= 4.2.1.rc4', path: '/Users/danmayer/projects/coverband', require: false
