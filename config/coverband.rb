@@ -6,8 +6,9 @@ Coverband.configure do |config|
   config.web_enable_clear = true
 
   # toggle store type
-  # redis_url = ENV['REDIS_URL']
+  redis_url = ENV['REDIS_URL']
   # config.store = Coverband::Adapters::MultiKeyRedisStore.new(Redis.new(url: redis_url))
+  # config.store = Coverband::Adapters::HashRedisStore.new(Redis.new(url: redis_url))
 
   # toggle on and off using oneshot
   # config.use_oneshot_lines_coverage = true
@@ -18,10 +19,12 @@ Coverband.configure do |config|
   config.web_debug = true
 
   # toggle on and off tracking gems
-  config.track_gems = true
+  # config.track_gems = true
 
   # toggle on and off gem file details
-  config.gem_details = true
+  # config.gem_details = true
+
+  config.track_views = true
 
   # ignores bin started to show in runtime only ;)
   # NOTE: that activerecord/* shows how to ignore gems
@@ -49,7 +52,8 @@ Coverband.configure do |config|
                       minitest/*
                       puma/*
                       rainbows/*
-                      some_gem/*]
+                      some_gem/*
+                    ]
 
   # configure S3 integration
   # config.s3_bucket = 'coverband-demo'

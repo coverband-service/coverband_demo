@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 
 # require coverband here to ensure tracking of all gems
-require 'coverband'
+# require 'coverband'
 
 Bundler.require(*Rails.groups)
 require 'sidekiq/api'
