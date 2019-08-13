@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/danmayer/coverband.git
+  revision: 737b94717e0c422413ade260e751823e0814ca25
+  branch: view_tracker
+  specs:
+    coverband (4.2.2.rc.1)
+      redis
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -70,8 +78,6 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
-    coverband (4.2.1)
-      redis
     crass (1.0.4)
     erubi (1.8.0)
     execjs (2.7.0)
@@ -239,7 +245,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
-  coverband (= 4.2.1)
+  coverband (>= 4.2.2.rc.1)!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   material_icons
