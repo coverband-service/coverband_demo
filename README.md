@@ -21,7 +21,6 @@ The initial design off the demo site was pulled from a demo'ed theme, a Material
 
 - more realistic Rails usage: - perhaps add something to help market coverband like show tweets - showcase different collection methods - thinking I could use it to demo the code observability concept via an API with document storage to attach arbitrary data to lines of code.
 - add deploy to Heroku button support
-- add cron example / integration
 - API to collect arbitrary line usage
 - API to collect perf data across CI runs
   - client would post data on each benchmark run
