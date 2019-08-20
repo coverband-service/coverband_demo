@@ -79,10 +79,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # move coverband to current development branch to see if that has an impact
 # gem 'coverband', '>= 4.2.2.rc.1', git: 'https://github.com/danmayer/coverband.git', branch: 'view_tracker', require: false
-gem 'coverband', '>= 4.2.2.rc.1', git: 'https://github.com/danmayer/coverband.git', branch: 'master', require: false
+# gem 'coverband', '>= 4.2.2.rc.1', git: 'https://github.com/danmayer/coverband.git', branch: 'master', require: false
 
 # Current Coverband Release
-# gem 'coverband', '= 4.2.1'
+gem 'coverband', '= 4.2.2'
 
 # Current Coverband development release candidate
 # gem 'coverband', '= 4.2.2.rc.1'
