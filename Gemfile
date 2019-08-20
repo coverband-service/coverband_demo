@@ -76,6 +76,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'nokogiri', '~> 1.10.4'
+
 
 # move coverband to current development branch to see if that has an impact
 # gem 'coverband', '>= 4.2.2.rc.1', git: 'https://github.com/danmayer/coverband.git', branch: 'view_tracker', require: false
