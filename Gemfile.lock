@@ -243,7 +243,7 @@ DEPENDENCIES
   material_icons
   minitest-ci
   newrelic_rpm
-  nokogiri (~> 1.10.4)
+  nokogiri (>= 1.10.4)
   pg
   pry-byebug
   puma (~> 3.11)
