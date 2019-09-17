@@ -9,6 +9,9 @@ Coverband.configure do |config|
   redis_url = ENV['REDIS_URL']
   # config.store = Coverband::Adapters::MultiKeyRedisStore.new(Redis.new(url: redis_url))
   config.store = Coverband::Adapters::HashRedisStore.new(Redis.new(url: redis_url))
+  # in general I would leave the report time to the defaults,
+  # but for the demo it is nice to update even faster
+  config.background_reporting_sleep_seconds = 10
 
   # toggle on and off using oneshot
   # config.use_oneshot_lines_coverage = true
