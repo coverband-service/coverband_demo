@@ -1,3 +1,6 @@
+###
+# This is a code demo and doesn't really relate to Coverband
+###
 namespace :smart_tests do
   desc 'pull CI test data'
   task :pull_ci_data do
