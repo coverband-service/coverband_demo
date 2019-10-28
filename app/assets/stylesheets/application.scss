@@ -27,3 +27,14 @@
   display: flex;
   align-items: center;
 }
+
+.working-image-demo {
+  background-image: image-url('coverband_logo.png');
+}
+
+// To Demo the broken assets on SCSS assets:precompile
+// uncomment the styling below
+//
+// .broken-image-demo {
+//   background-image: image-url('head_liner.svg');
+// }
