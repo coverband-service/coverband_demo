@@ -8,6 +8,9 @@ require 'rails/all'
 # require coverband here to ensure tracking of all gems
 # require 'coverband'
 
+# Example of how one could enable / disable coverband collection around dates
+# COVERBAND_DISABLE_AUTO_START = Time > Time.parse('1-11-2019') && Time > Time.parse('20-11-2019')
+
 Bundler.require(*Rails.groups)
 require 'sidekiq/api'
 

@@ -12,7 +12,9 @@ group :development, :test do
   # gem 'pry-rails'
 end
 
-# gem 'aws-sdk'
+# You must require awk explicitly if you want to use S3 reports
+# which are less common than the web reports
+# gem 'aws-sdk-s3'
 # gem 'aws-sdk', '~> 1'
 
 gem 'pg'
@@ -84,10 +86,10 @@ gem "nokogiri", ">= 1.10.4"
 # gem 'coverband', '>= 4.2.2.rc.1', git: 'https://github.com/danmayer/coverband.git', branch: 'master', require: false
 
 # Current Coverband Release
-# gem 'coverband', '= 4.2.2'
+gem 'coverband', '= 4.2.4'
 
 # Current Coverband development release candidate
-gem 'coverband', '= 4.2.3.rc.1'
+# gem 'coverband', '= 4.2.3.rc.1'
 
 # For local gem file testing
-# gem 'coverband', '>= 4.2.3.rc.1', path: '/Users/danmayer/projects/coverband', require: false
+# gem 'coverband', '>= 4.2.4', path: '/Users/danmayer/projects/coverband', require: false
