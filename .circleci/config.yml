@@ -16,6 +16,7 @@ jobs:
         environment:
           POSTGRES_HOST: 127.0.0.1      
           POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
 
       - image: redis
 
@@ -24,6 +25,7 @@ jobs:
     environment:
       PG_HOST: localhost
       PG_USER: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
       RAILS_ENV: test
       DATABASE_URL: postgres://postgres@127.0.0.1:5432/coverband_demo_test
 
