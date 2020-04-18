@@ -10,6 +10,16 @@ The demo site is hosted on Heroku.
 
 - basic setup was done following the standard [Heroku Rails 5 Guide](https://devcenter.heroku.com/articles/getting-started-with-rails5)
 
+# Running with JRuby
+
+This application runs both with CRuby (MRI) or JRuby. If you want to run via JRuby you can either update the `.ruby-version` to have `jruby`... Or you can one off switch over.
+
+```
+rvm use jruby
+bundle install
+bundle exec rails s
+```
+
 # Theme
 
 The initial design off the demo site was pulled from a demo'ed theme, a Material Design Bootstrap 4 Theme.

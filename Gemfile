@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4.2'
@@ -8,7 +7,7 @@ gem 'rails', '~> 5.2.4.2'
 # Moved above coverband so I can debug coverband during rails startup
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'pry-byebug'
+  gem 'pry-byebug', platforms: [:mri, :mingw, :x64_mingw]
   # gem 'pry-rails'
 end
 
@@ -17,7 +16,9 @@ end
 # gem 'aws-sdk-s3'
 # gem 'aws-sdk', '~> 1'
 
-gem 'pg'
+gem 'pg', platforms: [:mri, :mingw, :x64_mingw]
+gem 'activerecord-jdbcpostgresql-adapter', '~> 52.0', platforms: [:jruby]
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -53,11 +54,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sidekiq'
 
 # show a gem that is never used but loaded
-gem 'rainbows'
+# gem 'rainbows'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  # gem 'web-console', '>= 3.3.0', platforms: [:mri, :mingw, :x64_mingw]
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop'
 
@@ -78,7 +79,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "nokogiri", ">= 1.10.4"
+gem 'nokogiri', '>= 1.10.4'
 
 
 # move coverband to current development branch to see if that has an impact
@@ -86,10 +87,10 @@ gem "nokogiri", ">= 1.10.4"
 # gem 'coverband', '>= 4.2.2.rc.1', git: 'https://github.com/danmayer/coverband.git', branch: 'master', require: false
 
 # Current Coverband Release
-gem 'coverband', '= 4.2.4'
+# gem 'coverband', '= 4.2.4'
 
 # Current Coverband development release candidate
-# gem 'coverband', '= 4.2.3.rc.1'
+gem 'coverband', '= 4.2.5.rc.2'
 
 # For local gem file testing
-# gem 'coverband', '>= 4.2.4', path: '/Users/danmayer/projects/coverband', require: false
+# gem 'coverband', '>= 4.2.5.rc.2', path: '/Users/danmayer/projects/coverband', require: false
