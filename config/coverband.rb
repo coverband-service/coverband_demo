@@ -9,6 +9,8 @@ Coverband.configure do |config|
   redis_url = ENV['REDIS_URL']
   # config.store = Coverband::Adapters::MultiKeyRedisStore.new(Redis.new(url: redis_url))
   config.store = Coverband::Adapters::HashRedisStore.new(Redis.new(url: redis_url))
+  # config.store = Coverband::Adapters::StdoutStore.new
+  # config.store = Coverband::Adapters::FileStore.new('log/coverage.log')
   # in general I would leave the report time to the defaults,
   # but for the demo it is nice to update even faster
   config.background_reporting_sleep_seconds = 10
@@ -21,13 +23,7 @@ Coverband.configure do |config|
   # allowing one to dump full coverband stored json data to web
   config.web_debug = true
 
-  # toggle on and off tracking gems
-  # config.track_gems = true
-
-  # toggle on and off gem file details
-  # config.gem_details = true
-
-  config.track_views = true
+  # config.track_views = true
 
   # ignores bin started to show in runtime only ;)
   # NOTE: that activerecord/* shows how to ignore gems

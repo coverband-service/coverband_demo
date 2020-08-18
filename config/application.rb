@@ -16,7 +16,7 @@ require 'sidekiq/api'
 
 # require coverband here with a gemfile of require: false
 # to ensure that no gem data is tracked which has slight performance and memory hits
-require 'coverband'
+# require 'coverband'
 
 module CoverbandDemo
   class Application < Rails::Application
