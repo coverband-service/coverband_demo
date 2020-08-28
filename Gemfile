@@ -87,7 +87,7 @@ gem 'nokogiri', '>= 1.10.4'
 # gem 'coverband', '>= 4.2.2.rc.1', git: 'https://github.com/danmayer/coverband.git', branch: 'master', require: false
 
 # Current Coverband Release
-gem 'coverband', '= 5.0.0.rc.4'
+gem 'coverband', '= 5.0.0.rc.5'
 
 # Current Coverband development release candidate
 # gem 'coverband', '= 4.2.5.r'
