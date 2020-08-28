@@ -54,12 +54,6 @@ Coverband.configure do |config|
                       some_gem/*
                     ]
 
-  # configure S3 integration
-  #config.s3_bucket = 'coverband-demo'
-  #config.s3_region = 'us-east-1'
-  #config.s3_access_key_id = ENV['AWS_ACCESS_KEY_ID']
-  #config.s3_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
-
   # This tests a stand alone rubyscript collecting its own Coverage
   # The script loads coverband and therefor needs to be reloaded
   # config.safe_reload_files = ['bin/script_test.rb']
