@@ -15,6 +15,17 @@ basic_constraint = lambda do |request|
   end
 end
 
+class AdminConstraint
+  def matches?(request)
+    request.session["init"] = true
+    Rails.logger.info "admin request session: #{request.session.inspect}"
+    return false if request.session[:admin_id].blank?
+    return true if User.find_by(id: request.session[:admin_id])&.admin?
+
+    false
+  end
+end
+
 Rails.application.routes.draw do
   root 'home#index'
   get '/trigger_jobs' => 'home#trigger_jobs'
@@ -32,4 +43,15 @@ Rails.application.routes.draw do
   #  mount Coverband::S3Web, at: '/coverage'
   # end
   mount Coverband::Reporters::Web.new, at: '/coverage'
+
+  # example of basic containts
+  # curl --user foo:bar http://localhost:3000/basic/restricted_coverage
+  scope :basic, constraints: basic_constraint do
+    mount Coverband::Reporters::Web.new, at: '/restricted_coverage'
+  end
+
+  # example of more complex restraint
+  scope :admin, constraints: AdminConstraint.new do
+    mount Coverband::Reporters::Web.new, at: '/restricted_coverage'
+  end
 end
