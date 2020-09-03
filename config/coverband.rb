@@ -23,7 +23,8 @@ Coverband.configure do |config|
   # allowing one to dump full coverband stored json data to web
   config.web_debug = true
 
-  # config.track_views = true
+  # should be true by default
+  config.track_views = true
 
   # ignores bin started to show in runtime only ;)
   # NOTE: that activerecord/* shows how to ignore gems
