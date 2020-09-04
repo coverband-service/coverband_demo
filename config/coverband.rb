@@ -24,7 +24,7 @@ Coverband.configure do |config|
   config.web_debug = true
 
   # should be true by default
-  config.track_views = true
+  # config.track_views = true
 
   # ignores bin started to show in runtime only ;)
   # NOTE: that activerecord/* shows how to ignore gems
