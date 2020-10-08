@@ -7,6 +7,7 @@ end
 # curl --user foo:bar http://localhost:3000/coverage
 basic_constraint = lambda do |request|
   return true if Rails.env.development?
+
   if ActionController::HttpAuthentication::Basic.has_basic_credentials?(request)
     credentials = ActionController::HttpAuthentication::Basic.decode_credentials(request)
     email, password = credentials.split(':')
