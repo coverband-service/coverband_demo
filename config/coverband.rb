@@ -26,6 +26,9 @@ Coverband.configure do |config|
   # should be true by default
   # config.track_views = true
 
+  # example of how to use the built in rack password support
+  # config.password = "example"
+
   # ignores bin started to show in runtime only ;)
   # NOTE: that activerecord/* shows how to ignore gems
   config.ignore += %w[config/application.rb
