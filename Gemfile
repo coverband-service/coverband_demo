@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.3'
+gem 'rails', '~> 6.0'
 
 # Moved above coverband so I can debug coverband during rails startup
 group :development, :test do
@@ -17,7 +17,7 @@ end
 # gem 'aws-sdk', '~> 1'
 
 gem 'pg', platforms: [:mri, :mingw, :x64_mingw]
-gem 'activerecord-jdbcpostgresql-adapter', '~> 52.0', platforms: [:jruby]
+gem 'activerecord-jdbcpostgresql-adapter', platforms: [:jruby]
 
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
@@ -87,7 +87,7 @@ gem 'nokogiri', '>= 1.10.4'
 # gem 'coverband', '>= 4.2.2.rc.1', git: 'https://github.com/danmayer/coverband.git', branch: 'master', require: false
 
 # Current Coverband Release
-gem 'coverband', '= 5.0.3'
+gem 'coverband', '= 5.1.0'
 
 # Current Coverband development release candidate
 # gem 'coverband', '= 4.2.5.r'

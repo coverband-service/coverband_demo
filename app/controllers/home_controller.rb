@@ -1,5 +1,7 @@
+require 'sidekiq/api'
+
 class HomeController < ApplicationController
-  before_action :set_notice, only: [:index]
+  before_action :set_notice, only: %i[index]
 
   def index
     @job_count = Sidekiq::Stats.new.processed
@@ -12,7 +14,8 @@ class HomeController < ApplicationController
   end
 
   def data_tracer
-    if !Rails.env.production? || params[:data_trace_api_key] == ENV['DATA_TRACE_API_KEY']
+    if !Rails.env.production? ||
+         params[:data_trace_api_key] == ENV['DATA_TRACE_API_KEY']
       redis_url = ENV['REDIS_URL']
       redis = Redis.new(url: redis_url)
       render plain: redis.get('data_tracer')
