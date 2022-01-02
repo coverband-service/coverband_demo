@@ -46,6 +46,11 @@ jobs:
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
+      - run:
+          name: install JS dependencies
+          command: |
+            yarn install
+
       - run: sudo apt install -y postgresql-client || true
 
       - save_cache:
