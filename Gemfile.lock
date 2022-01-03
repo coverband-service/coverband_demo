@@ -155,6 +155,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.12.5-java)
       racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.21.0)
     parser (3.0.3.2)
       ast (~> 2.4.1)
@@ -275,6 +277,7 @@ GEM
 PLATFORMS
   java
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   activerecord-jdbcpostgresql-adapter
